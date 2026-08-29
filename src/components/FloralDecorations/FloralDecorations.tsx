@@ -58,7 +58,13 @@ export function GoldRule({ className = "" }: { className?: string }) {
 }
 
 /** Slow falling petals layer. Purely decorative. */
-export function Petals({ count = 10, tone = "light" }: { count?: number; tone?: "light" | "dark" }) {
+export function Petals({
+  count = 10,
+  tone = "light",
+}: {
+  count?: number;
+  tone?: "light" | "dark" | "warm";
+}) {
   const reduced = useReducedMotion();
   if (reduced) return null;
 
