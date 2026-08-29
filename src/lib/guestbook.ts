@@ -6,6 +6,8 @@
  * touching any component.
  */
 
+import { weddingConfig } from "@/data/weddingConfig";
+
 export type Attendance = "hadir" | "tidak-hadir";
 
 export type WishEntry = {
@@ -76,7 +78,7 @@ function write(entries: WishEntry[]) {
   }
 }
 
-export const guestbookStore: GuestbookStore = {
+const localStore: GuestbookStore = {
   async list() {
     return read();
   },
@@ -91,6 +93,42 @@ export const guestbookStore: GuestbookStore = {
     return created;
   },
 };
+
+/** Google Apps Script Web App backed store (Google Spreadsheet). */
+function sheetsStore(endpoint: string): GuestbookStore {
+  return {
+    async list() {
+      try {
+        const res = await fetch(endpoint, { method: "GET" });
+        const data = (await res.json()) as { entries?: WishEntry[] };
+        return Array.isArray(data.entries) ? data.entries : [];
+      } catch {
+        return [];
+      }
+    },
+    async add(entry) {
+      const created: WishEntry = {
+        ...entry,
+        id: `w-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
+        createdAt: new Date().toISOString(),
+      };
+      // text/plain menghindari CORS preflight ke Apps Script
+      const res = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(created),
+      });
+      if (!res.ok) throw new Error("Gagal menyimpan ke spreadsheet");
+      return created;
+    },
+  };
+}
+
+const endpoint = weddingConfig.integrations.sheetsWebAppUrl;
+
+export const guestbookStore: GuestbookStore = endpoint
+  ? sheetsStore(endpoint)
+  : localStore;
 
 export function formatWishTime(iso: string) {
   try {
