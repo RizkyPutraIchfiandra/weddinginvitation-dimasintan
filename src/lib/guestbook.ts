@@ -6,6 +6,8 @@
  * touching any component.
  */
 
+import { weddingConfig } from "@/data/weddingConfig";
+
 export type Attendance = "hadir" | "tidak-hadir";
 
 export type WishEntry = {
