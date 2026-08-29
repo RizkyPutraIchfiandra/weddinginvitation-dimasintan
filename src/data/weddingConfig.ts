@@ -55,8 +55,23 @@ export const weddingConfig = {
     /* YouTube URL, MP4 URL, or empty string */
     videoUrl: "https://www.youtube.com/watch?v=ScMzIvxBSi4",
     videoPoster: g1,
-    /* Replace with your own wedding track */
+    /* Replace with your own wedding track (MP3). Dipakai jika spotifyUrl kosong. */
     musicUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
+    /**
+     * Link Spotify (track/playlist/album). Contoh:
+     * "https://open.spotify.com/track/xxxxxxxxxxxxxxxxxxxxxx"
+     * Jika diisi, player Spotify resmi dipakai (tanpa download lagu).
+     * Catatan: tanpa login Spotify hanya preview 30 detik, dan tidak bisa autoplay.
+     */
+    spotifyUrl: "",
+  },
+  integrations: {
+    /**
+     * URL Web App Google Apps Script (berakhiran /exec) untuk menyimpan RSVP
+     * ke Google Spreadsheet. Kosongkan untuk memakai penyimpanan lokal.
+     * Panduan: docs/GOOGLE-SHEETS-RSVP.md
+     */
+    sheetsWebAppUrl: "",
   },
   story: [
     {
