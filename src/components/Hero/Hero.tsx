@@ -20,10 +20,7 @@ export function Hero() {
       ref={ref}
       className="paper relative flex min-h-[100svh] items-center justify-center overflow-hidden px-6 py-24"
     >
-      <FloralCorner position="top-left" opacity={0.55} />
-      <FloralCorner position="top-right" opacity={0.55} />
-      <FloralCorner position="bottom-left" opacity={0.35} />
-      <FloralCorner position="bottom-right" opacity={0.35} />
+      <FloralCorner position="top-left" opacity={0.55} className="w-32 sm:w-56 lg:w-72" />
       <Petals count={9} />
 
       <motion.img
