@@ -71,7 +71,8 @@ export const weddingConfig = {
      * ke Google Spreadsheet. Kosongkan untuk memakai penyimpanan lokal.
      * Panduan: docs/GOOGLE-SHEETS-RSVP.md
      */
-    sheetsWebAppUrl: "",
+    sheetsWebAppUrl:
+      "https://script.google.com/macros/s/AKfycbwT4ZhAIg5zc9wCI2fkw_Gsi_6nUuk6A7jrLrBIrM2CcOsc4LFZzmz7rGLz4tHFIFWwSQ/exec",
   },
   story: [
     {
