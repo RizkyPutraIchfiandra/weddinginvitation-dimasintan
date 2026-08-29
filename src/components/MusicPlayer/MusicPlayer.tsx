@@ -1,21 +1,84 @@
 import { useEffect, useRef, useState } from "react";
-import { motion } from "motion/react";
-import { Disc3, Pause } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
+import { Disc3, Pause, X } from "lucide-react";
 import { weddingConfig } from "@/data/weddingConfig";
+
+/** Ubah link Spotify biasa menjadi URL embed player resmi. */
+function toSpotifyEmbed(url: string) {
+  try {
+    const u = new URL(url);
+    if (!u.hostname.includes("spotify.com")) return "";
+    const path = u.pathname.replace(/^\/(intl-[a-z]+\/)?/, "/");
+    return `https://open.spotify.com/embed${path}?utm_source=generator&theme=0`;
+  } catch {
+    return "";
+  }
+}
 
 export function MusicPlayer({ autoStart }: { autoStart: boolean }) {
   const ref = useRef<HTMLAudioElement>(null);
   const [playing, setPlaying] = useState(false);
+  const [open, setOpen] = useState(false);
+  const spotifyEmbed = toSpotifyEmbed(weddingConfig.media.spotifyUrl);
   const url = weddingConfig.media.musicUrl;
 
   useEffect(() => {
-    if (!autoStart || !ref.current) return;
+    if (spotifyEmbed || !autoStart || !ref.current) return;
     ref.current.volume = 0.55;
     ref.current
       .play()
       .then(() => setPlaying(true))
       .catch(() => setPlaying(false));
-  }, [autoStart]);
+  }, [autoStart, spotifyEmbed]);
+
+  const buttonClass =
+    "glass-card fixed right-4 bottom-24 z-40 flex size-12 items-center justify-center rounded-full text-chocolate focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none md:top-24 md:bottom-auto";
+
+  if (spotifyEmbed) {
+    return (
+      <>
+        <motion.button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.9 }}
+          whileTap={{ scale: 0.92 }}
+          aria-label={open ? "Tutup pemutar musik" : "Buka pemutar musik"}
+          aria-expanded={open}
+          className={buttonClass}
+        >
+          {open ? (
+            <X className="size-4" aria-hidden="true" />
+          ) : (
+            <Disc3 className="size-5 animate-spin-slow" aria-hidden="true" />
+          )}
+        </motion.button>
+
+        <AnimatePresence>
+          {open && (
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 12 }}
+              className="glass-card fixed right-4 bottom-40 z-40 w-[19rem] max-w-[calc(100vw-2rem)] overflow-hidden rounded-2xl p-2 md:top-40 md:bottom-auto"
+            >
+              <iframe
+                title="Pemutar musik pernikahan"
+                src={spotifyEmbed}
+                width="100%"
+                height="152"
+                frameBorder="0"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"
+                className="rounded-xl"
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </>
+    );
+  }
 
   if (!url) return null;
 
@@ -44,7 +107,7 @@ export function MusicPlayer({ autoStart }: { autoStart: boolean }) {
         whileTap={{ scale: 0.92 }}
         aria-label={playing ? "Jeda musik" : "Putar musik"}
         aria-pressed={playing}
-        className="glass-card fixed right-4 bottom-24 z-40 flex size-12 items-center justify-center rounded-full text-chocolate focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none md:top-24 md:bottom-auto"
+        className={buttonClass}
       >
         {playing ? (
           <Pause className="size-4" aria-hidden="true" />
