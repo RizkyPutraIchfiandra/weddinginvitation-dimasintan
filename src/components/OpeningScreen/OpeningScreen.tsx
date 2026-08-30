@@ -23,7 +23,7 @@ export function OpeningScreen({
     if (leaving) return;
     setLeaving(true);
     // Let the cinematic exit play before the invitation is revealed.
-    window.setTimeout(onOpen, reduced ? 200 : 1500);
+    window.setTimeout(onOpen, reduced ? 200 : 1150);
   };
 
   const step = (i: number) => ({
