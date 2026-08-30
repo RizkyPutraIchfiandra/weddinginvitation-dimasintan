@@ -27,9 +27,9 @@ export function OpeningScreen({
   };
 
   const step = (i: number) => ({
-    initial: reduced ? { opacity: 0 } : { opacity: 0, y: 26 },
+    initial: reduced ? { opacity: 0 } : { opacity: 0, y: 22 },
     animate: { opacity: 1, y: 0 },
-    transition: { duration: reduced ? 0.3 : 1, delay: reduced ? 0 : 1.1 + i * 0.28, ease: EASE },
+    transition: { duration: reduced ? 0.25 : 0.7, delay: reduced ? 0 : 0.25 + i * 0.14, ease: EASE },
   });
 
   return (
@@ -57,13 +57,13 @@ export function OpeningScreen({
       <Petals count={10} tone="warm" />
 
       {/* ── Signature wayang kulit: diagonal, rising bottom → top ── */}
-      <WayangRise src={wayangMale} side="left" leaving={leaving} reduced={!!reduced} delay={0.5} />
+      <WayangRise src={wayangMale} side="left" leaving={leaving} reduced={!!reduced} delay={0.15} />
       <WayangRise
         src={wayangFemale}
         side="right"
         leaving={leaving}
         reduced={!!reduced}
-        delay={0.75}
+        delay={0.3}
       />
 
       {/* content */}
