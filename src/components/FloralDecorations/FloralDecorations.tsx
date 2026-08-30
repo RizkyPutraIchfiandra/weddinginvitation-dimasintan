@@ -83,7 +83,11 @@ export function Petals({
         <span
           key={p.i}
           className={`absolute top-0 rounded-[100%_0_100%_0] ${
-            tone === "dark" ? "bg-champagne/35" : "bg-caramel/25"
+            tone === "dark"
+              ? "bg-champagne/35"
+              : tone === "warm"
+                ? "bg-caramel/45"
+                : "bg-caramel/25"
           }`}
           style={{
             left: `${p.left}%`,

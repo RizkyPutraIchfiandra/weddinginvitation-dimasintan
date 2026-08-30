@@ -4,7 +4,6 @@ import { Mail } from "lucide-react";
 import wayangFemale from "@/assets/wayang/wayang-female.png";
 import wayangMale from "@/assets/wayang/wayang-male.png";
 import { Particles, Petals, GoldRule } from "@/components/FloralDecorations/FloralDecorations";
-import cornerFloral from "@/assets/flowers/corner-1.png";
 import { weddingConfig } from "@/data/weddingConfig";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -54,32 +53,8 @@ export function OpeningScreen({
         transition={{ duration: 1.8, ease: EASE }}
       />
 
-      {/* floral ornaments */}
-      <motion.img
-        src={cornerFloral}
-        alt=""
-        aria-hidden="true"
-        width={1024}
-        height={1024}
-        className="pointer-events-none absolute -top-6 -left-10 w-52 -scale-x-100 opacity-60 sm:w-80"
-        initial={{ opacity: 0, scale: 1.08 }}
-        animate={{ opacity: leaving ? 0 : 0.55, scale: 1 }}
-        transition={{ duration: 1.6, delay: 0.35, ease: EASE }}
-      />
-      <motion.img
-        src={cornerFloral}
-        alt=""
-        aria-hidden="true"
-        width={1024}
-        height={1024}
-        className="pointer-events-none absolute -right-10 -bottom-8 w-52 -scale-y-100 opacity-60 sm:w-80"
-        initial={{ opacity: 0, scale: 1.08 }}
-        animate={{ opacity: leaving ? 0 : 0.5, scale: 1 }}
-        transition={{ duration: 1.6, delay: 0.5, ease: EASE }}
-      />
-
       <Particles count={24} />
-      <Petals count={8} tone="dark" />
+      <Petals count={10} tone="warm" />
 
       {/* ── Signature wayang kulit: diagonal, rising bottom → top ── */}
       <WayangRise src={wayangMale} side="left" leaving={leaving} reduced={!!reduced} delay={0.5} />
@@ -181,8 +156,8 @@ function WayangRise({
       width={704}
       height={1408}
       className={`pointer-events-none absolute bottom-0 select-none ${
-        side === "left" ? "-left-[18%] sm:-left-[10%]" : "-right-[18%] sm:-right-[8%]"
-      } h-[62vh] w-auto origin-bottom opacity-0 sm:h-[85vh] lg:h-[95vh]`}
+        side === "left" ? "-left-[28%] sm:-left-[10%]" : "-right-[28%] sm:-right-[8%]"
+      } h-[46vh] w-auto origin-bottom opacity-0 sm:h-[85vh] lg:h-[95vh]`}
       style={{ filter: "drop-shadow(0 30px 50px oklch(0.18 0.03 50 / 0.55))" }}
       initial={{ y: "78%", x: `${34 * dir}%`, rotate: baseRotate + 16 * dir, scale: 0.8, opacity: 0 }}
       animate={
