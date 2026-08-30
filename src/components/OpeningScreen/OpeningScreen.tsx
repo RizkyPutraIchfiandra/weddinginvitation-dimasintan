@@ -54,32 +54,8 @@ export function OpeningScreen({
         transition={{ duration: 1.8, ease: EASE }}
       />
 
-      {/* floral ornaments */}
-      <motion.img
-        src={cornerFloral}
-        alt=""
-        aria-hidden="true"
-        width={1024}
-        height={1024}
-        className="pointer-events-none absolute -top-6 -left-10 w-52 -scale-x-100 opacity-60 sm:w-80"
-        initial={{ opacity: 0, scale: 1.08 }}
-        animate={{ opacity: leaving ? 0 : 0.55, scale: 1 }}
-        transition={{ duration: 1.6, delay: 0.35, ease: EASE }}
-      />
-      <motion.img
-        src={cornerFloral}
-        alt=""
-        aria-hidden="true"
-        width={1024}
-        height={1024}
-        className="pointer-events-none absolute -right-10 -bottom-8 w-52 -scale-y-100 opacity-60 sm:w-80"
-        initial={{ opacity: 0, scale: 1.08 }}
-        animate={{ opacity: leaving ? 0 : 0.5, scale: 1 }}
-        transition={{ duration: 1.6, delay: 0.5, ease: EASE }}
-      />
-
       <Particles count={24} />
-      <Petals count={8} tone="dark" />
+      <Petals count={10} tone="warm" />
 
       {/* ── Signature wayang kulit: diagonal, rising bottom → top ── */}
       <WayangRise src={wayangMale} side="left" leaving={leaving} reduced={!!reduced} delay={0.5} />
