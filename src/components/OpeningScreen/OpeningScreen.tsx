@@ -4,7 +4,6 @@ import { Mail } from "lucide-react";
 import wayangFemale from "@/assets/wayang/wayang-female.png";
 import wayangMale from "@/assets/wayang/wayang-male.png";
 import { Particles, Petals, GoldRule } from "@/components/FloralDecorations/FloralDecorations";
-import cornerFloral from "@/assets/flowers/corner-1.png";
 import { weddingConfig } from "@/data/weddingConfig";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -157,8 +156,8 @@ function WayangRise({
       width={704}
       height={1408}
       className={`pointer-events-none absolute bottom-0 select-none ${
-        side === "left" ? "-left-[18%] sm:-left-[10%]" : "-right-[18%] sm:-right-[8%]"
-      } h-[62vh] w-auto origin-bottom opacity-0 sm:h-[85vh] lg:h-[95vh]`}
+        side === "left" ? "-left-[28%] sm:-left-[10%]" : "-right-[28%] sm:-right-[8%]"
+      } h-[46vh] w-auto origin-bottom opacity-0 sm:h-[85vh] lg:h-[95vh]`}
       style={{ filter: "drop-shadow(0 30px 50px oklch(0.18 0.03 50 / 0.55))" }}
       initial={{ y: "78%", x: `${34 * dir}%`, rotate: baseRotate + 16 * dir, scale: 0.8, opacity: 0 }}
       animate={
