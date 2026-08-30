@@ -178,7 +178,7 @@ function WayangRise({
           ? { duration: 0.3 }
           : leaving
             ? { duration: 1.4, ease: [0.65, 0, 0.35, 1] }
-            : { duration: 2.6, delay, ease: EASE, times: [0, 0.78, 1] }
+            : { duration: 1.7, delay, ease: EASE, times: [0, 0.78, 1] }
       }
     />
   );
