@@ -23,13 +23,13 @@ export function OpeningScreen({
     if (leaving) return;
     setLeaving(true);
     // Let the cinematic exit play before the invitation is revealed.
-    window.setTimeout(onOpen, reduced ? 200 : 1150);
+    window.setTimeout(onOpen, reduced ? 150 : 800);
   };
 
   const step = (i: number) => ({
-    initial: reduced ? { opacity: 0 } : { opacity: 0, y: 22 },
+    initial: reduced ? { opacity: 0 } : { opacity: 0, y: 12 },
     animate: { opacity: 1, y: 0 },
-    transition: { duration: reduced ? 0.25 : 0.7, delay: reduced ? 0 : 0.25 + i * 0.14, ease: EASE },
+    transition: { duration: reduced ? 0.15 : 0.35, delay: reduced ? 0 : i * 0.05, ease: EASE },
   });
 
   return (
@@ -57,13 +57,13 @@ export function OpeningScreen({
       <Petals count={10} tone="warm" />
 
       {/* ── Signature wayang kulit: diagonal, rising bottom → top ── */}
-      <WayangRise src={wayangMale} side="left" leaving={leaving} reduced={!!reduced} delay={0.15} />
+      <WayangRise src={wayangMale} side="left" leaving={leaving} reduced={!!reduced} delay={0} />
       <WayangRise
         src={wayangFemale}
         side="right"
         leaving={leaving}
         reduced={!!reduced}
-        delay={0.3}
+        delay={0.08}
       />
 
       {/* content */}
@@ -178,7 +178,7 @@ function WayangRise({
           ? { duration: 0.3 }
           : leaving
             ? { duration: 1.4, ease: [0.65, 0, 0.35, 1] }
-            : { duration: 1.7, delay, ease: EASE, times: [0, 0.78, 1] }
+            : { duration: 1, delay, ease: EASE, times: [0, 0.78, 1] }
       }
     />
   );

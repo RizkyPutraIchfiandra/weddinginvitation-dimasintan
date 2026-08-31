@@ -6,6 +6,7 @@ import g3 from "@/assets/photos/g3.jpg";
 import g4 from "@/assets/photos/g4.jpg";
 import g5 from "@/assets/photos/g5.jpg";
 import g6 from "@/assets/photos/g6.jpg";
+import weddingSong from "@/assets/wedding-song.mp3.asset.json";
 
 export type GalleryImage = {
   src: string;
@@ -19,22 +20,22 @@ export type BankAccount = { bank: string; holder: string; number: string };
 
 export const weddingConfig = {
   couple: {
-    brideName: "Alya",
-    brideFullName: "Alya Putri Maheswari",
-    brideNickname: "Alya",
+    brideName: "Intan",
+    brideFullName: "Intan",
+    brideNickname: "Intan",
     brideParents: "Putri kedua dari Bapak Hendra Maheswara & Ibu Retno Wulandari",
     bridePhoto,
-    groomName: "Raka",
-    groomFullName: "Raka Pratama Adiwijaya",
-    groomNickname: "Raka",
+    groomName: "Dimas",
+    groomFullName: "Dimas",
+    groomNickname: "Dimas",
     groomParents: "Putra pertama dari Bapak Budi Adiwijaya & Ibu Sri Handayani",
     groomPhoto,
   },
   event: {
     /* ISO local time of the ceremony — countdown targets this */
-    weddingDate: "2026-12-12T08:00:00+07:00",
-    weddingDateLabel: "12 . 12 . 2026",
-    weddingDayLabel: "Saturday, 12 December 2026",
+    weddingDate: "2026-12-06T08:00:00+07:00",
+    weddingDateLabel: "06 . 12 . 2026",
+    weddingDayLabel: "Sunday, 6 December 2026",
     akadTime: "08.00 – 10.00 WIB",
     receptionTime: "11.00 – 14.00 WIB",
     venueName: "Pendopo Agung Kusuma",
@@ -55,8 +56,8 @@ export const weddingConfig = {
     /* YouTube URL, MP4 URL, or empty string */
     videoUrl: "https://www.youtube.com/watch?v=ScMzIvxBSi4",
     videoPoster: g1,
-    /* Replace with your own wedding track (MP3). Dipakai jika spotifyUrl kosong. */
-    musicUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
+    /* Lagu pernikahan (MP3). Dipakai jika spotifyUrl kosong. */
+    musicUrl: weddingSong.url,
     /**
      * Link Spotify (track/playlist/album). Contoh:
      * "https://open.spotify.com/track/xxxxxxxxxxxxxxxxxxxxxx"
