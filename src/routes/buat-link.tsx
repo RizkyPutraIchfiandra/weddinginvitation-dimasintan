@@ -77,7 +77,24 @@ function LinkGenerator() {
           </div>
         </div>
 
-        <div className="mt-8 flex gap-2">
+        <div className="mt-6">
+          <label className="text-[0.65rem] tracking-[0.15em] text-mocha uppercase">
+            Domain undangan
+          </label>
+          <input
+            type="text"
+            value={baseInput}
+            onChange={(e) => setBaseInput(e.target.value)}
+            placeholder="https://domain-kamu.com"
+            className="mt-2 w-full rounded-xl border border-input bg-ivory px-4 py-3 text-sm text-espresso placeholder:text-mocha/50 focus:ring-2 focus:ring-ring focus:outline-none"
+          />
+          <p className="mt-2 text-[0.65rem] text-mocha/60">
+            Ganti ke domain final kalau nanti pakai domain sendiri.
+          </p>
+        </div>
+
+        <div className="mt-4 flex gap-2">
+
           <input
             type="text"
             value={name}
