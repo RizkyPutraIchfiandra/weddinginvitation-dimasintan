@@ -27,9 +27,9 @@ export function OpeningScreen({
   };
 
   const step = (i: number) => ({
-    initial: reduced ? { opacity: 0 } : { opacity: 0, y: 22 },
+    initial: reduced ? { opacity: 0 } : { opacity: 0, y: 12 },
     animate: { opacity: 1, y: 0 },
-    transition: { duration: reduced ? 0.25 : 0.7, delay: reduced ? 0 : 0.25 + i * 0.14, ease: EASE },
+    transition: { duration: reduced ? 0.15 : 0.35, delay: reduced ? 0 : i * 0.05, ease: EASE },
   });
 
   return (
