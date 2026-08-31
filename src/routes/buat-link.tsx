@@ -14,17 +14,31 @@ export const Route = createFileRoute("/buat-link")({
   component: LinkGenerator,
 });
 
+const PUBLISHED_URL = "https://weddinginvitation-dimasintan.lovable.app";
+
+function defaultBase() {
+  if (typeof window === "undefined") return PUBLISHED_URL;
+  const host = window.location.hostname;
+  const isPreview =
+    host.includes("lovableproject.com") ||
+    host.includes("id-preview") ||
+    host === "localhost";
+  return isPreview ? PUBLISHED_URL : window.location.origin;
+}
+
 function LinkGenerator() {
   const [name, setName] = useState("");
   const [guests, setGuests] = useState<string[]>([]);
   const [copied, setCopied] = useState<string | null>(null);
+  const [baseInput, setBaseInput] = useState(defaultBase);
 
   const baseUrl = useMemo(
-    () => (typeof window !== "undefined" ? window.location.origin : ""),
-    [],
+    () => baseInput.trim().replace(/\/+$/, ""),
+    [baseInput],
   );
 
   const buildLink = (guest: string) => `${baseUrl}/${nameToSlug(guest)}`;
+
 
   const addGuest = () => {
     const trimmed = name.trim();
