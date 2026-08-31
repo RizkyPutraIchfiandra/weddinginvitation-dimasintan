@@ -19,22 +19,22 @@ export type BankAccount = { bank: string; holder: string; number: string };
 
 export const weddingConfig = {
   couple: {
-    brideName: "Alya",
-    brideFullName: "Alya Putri Maheswari",
-    brideNickname: "Alya",
+    brideName: "Intan",
+    brideFullName: "Intan",
+    brideNickname: "Intan",
     brideParents: "Putri kedua dari Bapak Hendra Maheswara & Ibu Retno Wulandari",
     bridePhoto,
-    groomName: "Raka",
-    groomFullName: "Raka Pratama Adiwijaya",
-    groomNickname: "Raka",
+    groomName: "Dimas",
+    groomFullName: "Dimas",
+    groomNickname: "Dimas",
     groomParents: "Putra pertama dari Bapak Budi Adiwijaya & Ibu Sri Handayani",
     groomPhoto,
   },
   event: {
     /* ISO local time of the ceremony — countdown targets this */
-    weddingDate: "2026-12-12T08:00:00+07:00",
-    weddingDateLabel: "12 . 12 . 2026",
-    weddingDayLabel: "Saturday, 12 December 2026",
+    weddingDate: "2026-12-06T08:00:00+07:00",
+    weddingDateLabel: "06 . 12 . 2026",
+    weddingDayLabel: "Sunday, 6 December 2026",
     akadTime: "08.00 – 10.00 WIB",
     receptionTime: "11.00 – 14.00 WIB",
     venueName: "Pendopo Agung Kusuma",
