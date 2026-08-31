@@ -55,8 +55,8 @@ export const weddingConfig = {
     /* YouTube URL, MP4 URL, or empty string */
     videoUrl: "https://www.youtube.com/watch?v=ScMzIvxBSi4",
     videoPoster: g1,
-    /* Replace with your own wedding track (MP3). Dipakai jika spotifyUrl kosong. */
-    musicUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
+    /* Lagu pernikahan (MP3). Dipakai jika spotifyUrl kosong. */
+    musicUrl: weddingSong.url,
     /**
      * Link Spotify (track/playlist/album). Contoh:
      * "https://open.spotify.com/track/xxxxxxxxxxxxxxxxxxxxxx"
