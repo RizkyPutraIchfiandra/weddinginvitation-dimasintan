@@ -6,6 +6,7 @@ import g3 from "@/assets/photos/g3.jpg";
 import g4 from "@/assets/photos/g4.jpg";
 import g5 from "@/assets/photos/g5.jpg";
 import g6 from "@/assets/photos/g6.jpg";
+import weddingSong from "@/assets/wedding-song.mp3.asset.json";
 
 export type GalleryImage = {
   src: string;
