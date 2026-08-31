@@ -14,17 +14,31 @@ export const Route = createFileRoute("/buat-link")({
   component: LinkGenerator,
 });
 
+const PUBLISHED_URL = "https://weddinginvitation-dimasintan.lovable.app";
+
+function defaultBase() {
+  if (typeof window === "undefined") return PUBLISHED_URL;
+  const host = window.location.hostname;
+  const isPreview =
+    host.includes("lovableproject.com") ||
+    host.includes("id-preview") ||
+    host === "localhost";
+  return isPreview ? PUBLISHED_URL : window.location.origin;
+}
+
 function LinkGenerator() {
   const [name, setName] = useState("");
   const [guests, setGuests] = useState<string[]>([]);
   const [copied, setCopied] = useState<string | null>(null);
+  const [baseInput, setBaseInput] = useState(defaultBase);
 
   const baseUrl = useMemo(
-    () => (typeof window !== "undefined" ? window.location.origin : ""),
-    [],
+    () => baseInput.trim().replace(/\/+$/, ""),
+    [baseInput],
   );
 
   const buildLink = (guest: string) => `${baseUrl}/${nameToSlug(guest)}`;
+
 
   const addGuest = () => {
     const trimmed = name.trim();
@@ -63,7 +77,24 @@ function LinkGenerator() {
           </div>
         </div>
 
-        <div className="mt-8 flex gap-2">
+        <div className="mt-6">
+          <label className="text-[0.65rem] tracking-[0.15em] text-mocha uppercase">
+            Domain undangan
+          </label>
+          <input
+            type="text"
+            value={baseInput}
+            onChange={(e) => setBaseInput(e.target.value)}
+            placeholder="https://domain-kamu.com"
+            className="mt-2 w-full rounded-xl border border-input bg-ivory px-4 py-3 text-sm text-espresso placeholder:text-mocha/50 focus:ring-2 focus:ring-ring focus:outline-none"
+          />
+          <p className="mt-2 text-[0.65rem] text-mocha/60">
+            Ganti ke domain final kalau nanti pakai domain sendiri.
+          </p>
+        </div>
+
+        <div className="mt-4 flex gap-2">
+
           <input
             type="text"
             value={name}
