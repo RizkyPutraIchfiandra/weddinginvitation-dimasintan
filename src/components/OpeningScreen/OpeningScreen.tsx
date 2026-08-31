@@ -57,13 +57,13 @@ export function OpeningScreen({
       <Petals count={10} tone="warm" />
 
       {/* ── Signature wayang kulit: diagonal, rising bottom → top ── */}
-      <WayangRise src={wayangMale} side="left" leaving={leaving} reduced={!!reduced} delay={0.15} />
+      <WayangRise src={wayangMale} side="left" leaving={leaving} reduced={!!reduced} delay={0} />
       <WayangRise
         src={wayangFemale}
         side="right"
         leaving={leaving}
         reduced={!!reduced}
-        delay={0.3}
+        delay={0.08}
       />
 
       {/* content */}
