@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { Check, Copy, Link2, Plus, Trash2 } from "lucide-react";
 import { toast } from "sonner";
+import { nameToSlug } from "@/lib/guestSlug";
 
 export const Route = createFileRoute("/buat-link")({
   head: () => ({
@@ -23,8 +24,7 @@ function LinkGenerator() {
     [],
   );
 
-  const buildLink = (guest: string) =>
-    `${baseUrl}/?to=${encodeURIComponent(guest.trim())}`;
+  const buildLink = (guest: string) => `${baseUrl}/${nameToSlug(guest)}`;
 
   const addGuest = () => {
     const trimmed = name.trim();

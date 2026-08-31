@@ -10,11 +10,17 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as GuestRouteImport } from './routes/$guest'
 import { Route as BuatLinkRouteImport } from './routes/buat-link'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuestRoute = GuestRouteImport.update({
+  id: '/$guest',
+  path: '/$guest',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BuatLinkRoute = BuatLinkRouteImport.update({
@@ -25,27 +31,31 @@ const BuatLinkRoute = BuatLinkRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/$guest': typeof GuestRoute
   '/buat-link': typeof BuatLinkRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/$guest': typeof GuestRoute
   '/buat-link': typeof BuatLinkRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/$guest': typeof GuestRoute
   '/buat-link': typeof BuatLinkRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/buat-link'
+  fullPaths: '/' | '/$guest' | '/buat-link'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/buat-link'
-  id: '__root__' | '/' | '/buat-link'
+  to: '/' | '/$guest' | '/buat-link'
+  id: '__root__' | '/' | '/$guest' | '/buat-link'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  GuestRoute: typeof GuestRoute
   BuatLinkRoute: typeof BuatLinkRoute
 }
 
@@ -56,6 +66,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$guest': {
+      id: '/$guest'
+      path: '/$guest'
+      fullPath: '/$guest'
+      preLoaderRoute: typeof GuestRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/buat-link': {
@@ -70,6 +87,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  GuestRoute: GuestRoute,
   BuatLinkRoute: BuatLinkRoute,
 }
 export const routeTree = rootRouteImport
