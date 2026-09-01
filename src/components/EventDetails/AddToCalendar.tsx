@@ -62,19 +62,22 @@ function icsContent() {
 }
 
 export function AddToCalendar() {
-  const handleDownload = () => {
-    const blob = new Blob([icsContent()], { type: "text/calendar;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "undangan-pernikahan.ics";
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    URL.revokeObjectURL(url);
-    toast.success("Membuka kalender HP Anda…", {
-      description: "Konfirmasi simpan acara — pengingat otomatis sudah terpasang.",
-    });
+  const handleAdd = () => {
+    const ua = navigator.userAgent;
+    const isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
+    if (isIOS) {
+      // iPhone/iPad: buka file acara langsung — Safari menampilkan layar
+      // "Tambah ke Kalender" bawaan tanpa perlu mengunduh manual.
+      const blob = new Blob([icsContent()], { type: "text/calendar;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      window.open(url, "_blank");
+      setTimeout(() => URL.revokeObjectURL(url), 60_000);
+    } else {
+      // Android & desktop: buka langsung aplikasi/situs Google Calendar
+      // dengan acara yang sudah terisi — tinggal tekan "Simpan".
+      window.open(googleCalendarUrl(), "_blank", "noopener,noreferrer");
+    }
   };
 
   return (
