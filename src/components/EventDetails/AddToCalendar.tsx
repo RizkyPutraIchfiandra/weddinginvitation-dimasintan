@@ -1,5 +1,4 @@
 import { CalendarPlus } from "lucide-react";
-import { toast } from "sonner";
 import { weddingConfig } from "@/data/weddingConfig";
 
 /** Format a Date as UTC basic format used by iCalendar / Google Calendar. */
