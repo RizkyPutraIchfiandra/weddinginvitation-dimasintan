@@ -2,6 +2,7 @@ import { CalendarDays, Clock, MapPin, Navigation2 } from "lucide-react";
 import { Reveal } from "@/components/common/Reveal";
 import { SectionTitle } from "@/components/common/SectionTitle";
 import { FloralCorner, GoldRule } from "@/components/FloralDecorations/FloralDecorations";
+import { AddToCalendar } from "@/components/EventDetails/AddToCalendar";
 import { weddingConfig } from "@/data/weddingConfig";
 
 function EventCard({
@@ -84,6 +85,7 @@ export function EventDetails() {
             Lihat Alamat
           </a>
         </div>
+        <AddToCalendar />
       </Reveal>
     </section>
   );
