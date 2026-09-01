@@ -85,6 +85,7 @@ export function EventDetails() {
             Lihat Alamat
           </a>
         </div>
+        <AddToCalendar />
       </Reveal>
     </section>
   );
