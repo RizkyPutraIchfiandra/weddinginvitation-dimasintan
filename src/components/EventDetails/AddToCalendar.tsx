@@ -1,4 +1,4 @@
-import { CalendarPlus, Download } from "lucide-react";
+import { CalendarPlus } from "lucide-react";
 import { toast } from "sonner";
 import { weddingConfig } from "@/data/weddingConfig";
 
@@ -18,17 +18,6 @@ const TITLE = `Pernikahan ${weddingConfig.couple.groomName} & ${weddingConfig.co
 const DESCRIPTION = `Akad Nikah ${weddingConfig.event.akadTime} · Resepsi ${weddingConfig.event.receptionTime}. Kami menantikan kehadiran Anda.`;
 const LOCATION = `${weddingConfig.event.venueName}, ${weddingConfig.event.venueAddress}`;
 
-function googleCalendarUrl() {
-  const { start, end } = buildTimes();
-  const params = new URLSearchParams({
-    action: "TEMPLATE",
-    text: TITLE,
-    dates: `${toICSDate(start)}/${toICSDate(end)}`,
-    details: DESCRIPTION,
-    location: LOCATION,
-  });
-  return `https://calendar.google.com/calendar/render?${params.toString()}`;
-}
 
 function icsContent() {
   const { start, end } = buildTimes();
@@ -73,36 +62,25 @@ export function AddToCalendar() {
     a.click();
     a.remove();
     URL.revokeObjectURL(url);
-    toast.success("File kalender diunduh", {
-      description: "Buka file-nya untuk menyimpan acara beserta pengingatnya.",
+    toast.success("Membuka kalender HP Anda…", {
+      description: "Konfirmasi simpan acara — pengingat otomatis sudah terpasang.",
     });
   };
 
   return (
     <div className="mt-10 text-center">
       <p className="text-xs leading-relaxed text-mocha/80">
-        Simpan tanggalnya di kalender Anda — pengingat otomatis akan muncul sehari sebelum dan 2 jam
+        Simpan tanggalnya ke kalender HP Anda — pengingat otomatis muncul sehari sebelum dan 2 jam
         sebelum acara dimulai.
       </p>
-      <div className="mt-5 flex flex-wrap justify-center gap-3">
-        <a
-          href={googleCalendarUrl()}
-          target="_blank"
-          rel="noreferrer noopener"
-          className="inline-flex items-center gap-2 rounded-full border border-caramel/40 bg-cream/60 px-6 py-3 text-[0.7rem] tracking-[0.28em] text-chocolate uppercase transition-colors hover:bg-beige/70 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
-        >
-          <CalendarPlus className="size-4" aria-hidden="true" />
-          Google Calendar
-        </a>
-        <button
-          type="button"
-          onClick={handleDownload}
-          className="inline-flex items-center gap-2 rounded-full border border-caramel/40 px-6 py-3 text-[0.7rem] tracking-[0.28em] text-mocha uppercase transition-colors hover:text-chocolate focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
-        >
-          <Download className="size-4" aria-hidden="true" />
-          Apple / Outlook (.ics)
-        </button>
-      </div>
+      <button
+        type="button"
+        onClick={handleDownload}
+        className="mt-5 inline-flex items-center gap-2 rounded-full border border-caramel/40 bg-cream/60 px-6 py-3 text-[0.7rem] tracking-[0.28em] text-chocolate uppercase transition-colors hover:bg-beige/70 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+      >
+        <CalendarPlus className="size-4" aria-hidden="true" />
+        Simpan ke Kalender
+      </button>
     </div>
   );
 }
