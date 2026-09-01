@@ -17,6 +17,17 @@ const TITLE = `Pernikahan ${weddingConfig.couple.groomName} & ${weddingConfig.co
 const DESCRIPTION = `Akad Nikah ${weddingConfig.event.akadTime} · Resepsi ${weddingConfig.event.receptionTime}. Kami menantikan kehadiran Anda.`;
 const LOCATION = `${weddingConfig.event.venueName}, ${weddingConfig.event.venueAddress}`;
 
+function googleCalendarUrl() {
+  const { start, end } = buildTimes();
+  const params = new URLSearchParams({
+    action: "TEMPLATE",
+    text: TITLE,
+    dates: `${toICSDate(start)}/${toICSDate(end)}`,
+    details: DESCRIPTION,
+    location: LOCATION,
+  });
+  return `https://calendar.google.com/calendar/render?${params.toString()}`;
+}
 
 function icsContent() {
   const { start, end } = buildTimes();
