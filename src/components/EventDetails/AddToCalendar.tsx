@@ -83,12 +83,12 @@ export function AddToCalendar() {
   return (
     <div className="mt-10 text-center">
       <p className="text-xs leading-relaxed text-mocha/80">
-        Simpan tanggalnya ke kalender HP Anda — pengingat otomatis muncul sehari sebelum dan 2 jam
-        sebelum acara dimulai.
+        Satu klik langsung membuka kalender HP Anda dengan acara yang sudah terisi — tinggal tekan
+        "Simpan". Pengingat otomatis muncul sehari sebelum dan 2 jam sebelum acara dimulai.
       </p>
       <button
         type="button"
-        onClick={handleDownload}
+        onClick={handleAdd}
         className="mt-5 inline-flex items-center gap-2 rounded-full border border-caramel/40 bg-cream/60 px-6 py-3 text-[0.7rem] tracking-[0.28em] text-chocolate uppercase transition-colors hover:bg-beige/70 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
       >
         <CalendarPlus className="size-4" aria-hidden="true" />
