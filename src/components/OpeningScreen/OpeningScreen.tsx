@@ -92,7 +92,7 @@ export function OpeningScreen({
           {...step(3)}
           className="glass-card mt-10 w-full max-w-sm rounded-2xl px-6 py-6"
           style={{
-            background: "color-mix(in oklab, var(--espresso) 42%, transparent)",
+            background: "color-mix(in oklab, var(--mocha) 28%, transparent)",
             borderColor: "color-mix(in oklab, var(--champagne) 32%, transparent)",
           }}
         >
@@ -158,7 +158,7 @@ function WayangRise({
       className={`pointer-events-none absolute bottom-0 select-none ${
         side === "left" ? "-left-[28%] sm:-left-[10%]" : "-right-[28%] sm:-right-[8%]"
       } h-[46vh] w-auto origin-bottom opacity-0 sm:h-[85vh] lg:h-[95vh]`}
-      style={{ filter: "drop-shadow(0 30px 50px oklch(0.18 0.03 50 / 0.55))" }}
+      style={{ filter: "drop-shadow(0 30px 50px oklch(0.35 0.045 55 / 0.45))" }}
       initial={{ y: "78%", x: `${34 * dir}%`, rotate: baseRotate + 16 * dir, scale: 0.8, opacity: 0 }}
       animate={
         reduced
