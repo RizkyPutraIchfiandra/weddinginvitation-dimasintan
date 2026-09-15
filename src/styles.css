@@ -92,10 +92,10 @@
 
   --gradient-opening: linear-gradient(
     170deg,
-    oklch(0.18 0.028 50) 0%,
-    oklch(0.26 0.04 54) 38%,
-    oklch(0.42 0.055 62) 72%,
-    oklch(0.72 0.05 76) 100%
+    oklch(0.32 0.045 54) 0%,
+    oklch(0.42 0.052 58) 35%,
+    oklch(0.58 0.058 64) 68%,
+    oklch(0.78 0.04 76) 100%
   );
   --gradient-page: linear-gradient(180deg, var(--ivory) 0%, var(--cream) 45%, var(--ivory) 100%);
   --gradient-gold: linear-gradient(100deg, var(--caramel), var(--champagne), var(--gold));
