@@ -1,6 +1,8 @@
 import { motion, useReducedMotion } from "motion/react";
-import cornerFloral from "@/assets/flowers/corner-1.png";
-import dividerFloral from "@/assets/flowers/divider.png";
+import cornerFloralAsset from "@/assets/flowers/corner-1.png.asset.json";
+const cornerFloral = cornerFloralAsset.url;
+import dividerFloralAsset from "@/assets/flowers/divider.png.asset.json";
+const dividerFloral = dividerFloralAsset.url;
 
 export function FloralCorner({
   position = "top-left",
