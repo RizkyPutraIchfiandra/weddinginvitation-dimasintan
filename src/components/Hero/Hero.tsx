@@ -1,6 +1,7 @@
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
-import wayangFemale from "@/assets/wayang/wayang-female.png";
+import wayangFemaleAsset from "@/assets/wayang/wayang-female.png.asset.json";
+const wayangFemale = wayangFemaleAsset.url;
 import { FloralCorner, GoldRule, Petals } from "@/components/FloralDecorations/FloralDecorations";
 import { weddingConfig } from "@/data/weddingConfig";
 

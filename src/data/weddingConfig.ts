@@ -1,12 +1,20 @@
-import bridePhoto from "@/assets/photos/bride.jpg";
-import groomPhoto from "@/assets/photos/groom.jpg";
-import g1 from "@/assets/photos/g1.jpg";
-import g2 from "@/assets/photos/g2.jpg";
-import g3 from "@/assets/photos/g3.jpg";
-import g4 from "@/assets/photos/g4.jpg";
-import g5 from "@/assets/photos/g5.jpg";
-import g6 from "@/assets/photos/g6.jpg";
-import weddingSong from "@/assets/wedding-song.mp3.asset.json";
+import bridePhotoAsset from "@/assets/photos/bride.jpg.asset.json";
+const bridePhoto = bridePhotoAsset.url;
+import groomPhotoAsset from "@/assets/photos/groom.jpg.asset.json";
+const groomPhoto = groomPhotoAsset.url;
+import g1Asset from "@/assets/photos/g1.jpg.asset.json";
+const g1 = g1Asset.url;
+import g2Asset from "@/assets/photos/g2.jpg.asset.json";
+const g2 = g2Asset.url;
+import g3Asset from "@/assets/photos/g3.jpg.asset.json";
+const g3 = g3Asset.url;
+import g4Asset from "@/assets/photos/g4.jpg.asset.json";
+const g4 = g4Asset.url;
+import g5Asset from "@/assets/photos/g5.jpg.asset.json";
+const g5 = g5Asset.url;
+import g6Asset from "@/assets/photos/g6.jpg.asset.json";
+const g6 = g6Asset.url;
+import weddingSong from "@/assets/audio/wedding-song.mp3.asset.json";
 
 export type GalleryImage = {
   src: string;

@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { Mail } from "lucide-react";
-import wayangFemale from "@/assets/wayang/wayang-female.png";
-import wayangMale from "@/assets/wayang/wayang-male.png";
+import wayangFemaleAsset from "@/assets/wayang/wayang-female.png.asset.json";
+const wayangFemale = wayangFemaleAsset.url;
+import wayangMaleAsset from "@/assets/wayang/wayang-male.png.asset.json";
+const wayangMale = wayangMaleAsset.url;
 import { Particles, Petals, GoldRule } from "@/components/FloralDecorations/FloralDecorations";
 import { weddingConfig } from "@/data/weddingConfig";
 
