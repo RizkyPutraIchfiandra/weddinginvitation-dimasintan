@@ -157,9 +157,9 @@ function WayangRise({
       height={1408}
       className={`pointer-events-none absolute bottom-0 select-none ${
         side === "left"
-          ? "-left-[30%] sm:-left-[16%] lg:-left-[12%]"
-          : "-right-[30%] sm:-right-[16%] lg:-right-[10%]"
-      } h-[58vh] w-auto origin-bottom opacity-0 sm:h-[72vh] lg:h-[78vh]`}
+          ? "-left-[30%] sm:-left-[16%] lg:-left-[20%]"
+          : "-right-[30%] sm:-right-[16%] lg:-right-[18%]"
+      } h-[58vh] w-auto origin-bottom opacity-0 sm:h-[72vh] lg:h-[64vh] xl:h-[70vh]`}
       style={{ filter: "drop-shadow(0 30px 50px oklch(0.35 0.045 55 / 0.45))" }}
       initial={{ y: "78%", x: `${34 * dir}%`, rotate: baseRotate + 16 * dir, scale: 0.8, opacity: 0 }}
       animate={
