@@ -87,7 +87,7 @@ export function OpeningScreen({
               {event.weddingDateLabel}
             </p>
           </motion.div>
-        </motion.div>
+        </div>
 
         <motion.div
           {...step(3)}
