@@ -61,7 +61,7 @@ export function OpeningScreen({
         delay={0}
       />
 
-      <div className="relative z-10 mx-auto grid h-full w-full max-w-5xl content-center gap-8 px-8 py-16 sm:px-14 md:grid-cols-[1fr_21rem] md:items-end md:gap-16 lg:px-20">
+      <div className="relative z-10 mx-auto grid h-full w-full max-w-5xl content-center gap-8 px-8 py-16 sm:px-14 lg:grid-cols-[1fr_21rem] lg:items-end lg:gap-16 lg:px-20">
         <div className="flex flex-col items-start text-left">
           <motion.p
             {...step(0)}
@@ -91,9 +91,9 @@ export function OpeningScreen({
 
         <motion.div
           {...step(3)}
-          className="w-full max-w-sm justify-self-center md:justify-self-end"
+          className="w-full max-w-sm justify-self-center lg:justify-self-end"
         >
-          <div className="border border-antique-gold/25 bg-paper-muted/65 px-6 py-6 text-center shadow-[0_24px_70px_-45px_var(--ink)] backdrop-blur-sm sm:px-8 sm:py-8 md:text-right">
+          <div className="border border-antique-gold/25 bg-paper-muted/65 px-6 py-6 text-center shadow-[0_24px_70px_-45px_var(--ink)] backdrop-blur-sm sm:px-8 sm:py-8 lg:text-right">
             <p className="font-opening-sans text-[0.6rem] tracking-[0.2em] text-ink/55 uppercase sm:text-[0.65rem]">
               Kepada Yth. Bapak/Ibu/Saudara/i
             </p>
@@ -112,7 +112,7 @@ export function OpeningScreen({
               Buka Undangan
             </MotionButton>
           </div>
-          <p className="mt-3 text-center font-opening-sans text-[0.55rem] tracking-[0.08em] text-antique-gold/75 uppercase md:text-right">
+          <p className="mt-3 text-center font-opening-sans text-[0.55rem] tracking-[0.08em] text-antique-gold/75 uppercase lg:text-right">
             Mohon maaf jika ada kesalahan penulisan nama atau gelar
           </p>
         </motion.div>
@@ -152,7 +152,7 @@ function WayangRise({
         side === "left"
           ? "-left-[38%] opacity-[0.13] sm:-left-[22%] md:-left-[12%] md:opacity-[0.11]"
           : "-right-[34%] opacity-[0.16] sm:-right-[18%] md:-right-[9%] md:opacity-[0.14]"
-      } h-[48vh] w-auto origin-bottom mix-blend-multiply sm:h-[62vh] md:h-[80vh]`}
+      } h-[48vh] w-auto origin-bottom mix-blend-multiply sm:h-[62vh] md:h-[68vh] lg:h-[80vh]`}
       initial={
         reduced
           ? { opacity: side === "left" ? 0.11 : 0.14 }
