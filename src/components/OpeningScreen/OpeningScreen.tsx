@@ -1,14 +1,15 @@
 import { useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { Mail } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import wayangFemaleAsset from "@/assets/wayang/wayang-female.png.asset.json";
 const wayangFemale = wayangFemaleAsset.url;
 import wayangMaleAsset from "@/assets/wayang/wayang-male.png.asset.json";
 const wayangMale = wayangMaleAsset.url;
-import { Particles, Petals, GoldRule } from "@/components/FloralDecorations/FloralDecorations";
 import { weddingConfig } from "@/data/weddingConfig";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
+const MotionButton = motion.create(Button);
 
 export function OpeningScreen({
   guestName,
@@ -24,98 +25,96 @@ export function OpeningScreen({
   const handleOpen = () => {
     if (leaving) return;
     setLeaving(true);
-    // Let the cinematic exit play before the invitation is revealed.
-    window.setTimeout(onOpen, reduced ? 150 : 800);
+    window.setTimeout(onOpen, reduced ? 100 : 420);
   };
 
   const step = (i: number) => ({
-    initial: reduced ? { opacity: 0 } : { opacity: 0, y: 12 },
+    initial: reduced ? { opacity: 0 } : { opacity: 0, y: 8 },
     animate: { opacity: 1, y: 0 },
-    transition: { duration: reduced ? 0.15 : 0.35, delay: reduced ? 0 : i * 0.05, ease: EASE },
+    transition: { duration: reduced ? 0.1 : 0.3, delay: reduced ? 0 : i * 0.035, ease: EASE },
   });
 
   return (
     <motion.section
       aria-label="Pembuka undangan"
-      className="grain fixed inset-0 z-50 overflow-hidden"
+      className="grain fixed inset-0 z-50 overflow-hidden bg-paper text-ink"
       style={{ background: "var(--gradient-opening)" }}
       animate={leaving ? { opacity: 0 } : { opacity: 1 }}
-      transition={{ duration: reduced ? 0.2 : 1.1, delay: leaving && !reduced ? 0.45 : 0, ease: EASE }}
+      transition={{ duration: reduced ? 0.15 : 0.45, ease: EASE }}
     >
-      {/* soft light */}
-      <motion.div
+      <div
         aria-hidden="true"
-        className="pointer-events-none absolute -top-1/3 left-1/2 h-[80vh] w-[80vh] -translate-x-1/2 rounded-full"
-        style={{
-          background:
-            "radial-gradient(circle, color-mix(in oklab, var(--champagne) 26%, transparent), transparent 62%)",
-        }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: leaving ? 0 : 1 }}
-        transition={{ duration: 1.8, ease: EASE }}
+        className="pointer-events-none absolute inset-3 border border-antique-gold/20 sm:inset-5"
       />
+      <div aria-hidden="true" className="pointer-events-none absolute top-7 right-7 flex gap-2 sm:top-10 sm:right-10">
+        <span className="size-1 rounded-full bg-antique-gold" />
+        <span className="size-1 rounded-full bg-paper-muted" />
+        <span className="size-1 rounded-full bg-ink" />
+      </div>
 
-      <Particles count={24} />
-      <Petals count={10} tone="warm" />
-
-      {/* ── Signature wayang kulit: diagonal, rising bottom → top ── */}
-      <WayangRise src={wayangMale} side="left" leaving={leaving} reduced={!!reduced} delay={0} />
+      <WayangRise src={wayangMale} side="left" leaving={leaving} reduced={!!reduced} delay={0.04} />
       <WayangRise
         src={wayangFemale}
         side="right"
         leaving={leaving}
         reduced={!!reduced}
-        delay={0.08}
+        delay={0}
       />
 
-      {/* content */}
-      <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 py-12 text-center">
-        <motion.p {...step(0)} className="eyebrow text-champagne/85">
-          The Wedding Of
-        </motion.p>
+      <div className="relative z-10 mx-auto grid h-full w-full max-w-5xl content-center gap-8 px-8 py-16 sm:px-14 lg:grid-cols-[1fr_21rem] lg:items-end lg:gap-16 lg:px-20">
+        <div className="flex flex-col items-start text-left">
+          <motion.p
+            {...step(0)}
+            className="font-opening-sans text-[0.65rem] font-medium tracking-[0.4em] text-antique-gold uppercase sm:text-xs"
+          >
+            The Wedding Of
+          </motion.p>
 
-        <motion.h1
-          {...step(1)}
-          className="mt-6 font-serif text-[clamp(3rem,15vw,7rem)] leading-[0.95] text-cream"
-        >
-          {couple.groomName}
-          <span className="mx-2 font-script text-champagne/90">&</span>
-          {couple.brideName}
-        </motion.h1>
+          <motion.h1
+            {...step(1)}
+            className="mt-5 font-opening-serif text-[clamp(3.15rem,13vw,6.8rem)] leading-[1.04] text-ink md:mt-7"
+          >
+            <span className="block">{couple.groomName}</span>
+            <span className="ml-8 block font-normal italic text-antique-gold sm:ml-14 md:ml-20">
+              &
+            </span>
+            <span className="block">{couple.brideName}</span>
+          </motion.h1>
 
-        <motion.div {...step(2)} className="mt-6 w-full max-w-xs">
-          <GoldRule />
-          <p className="mt-5 font-sans text-sm tracking-[0.5em] text-beige/90">
-            {event.weddingDateLabel}
-          </p>
-        </motion.div>
+          <motion.div {...step(2)} className="mt-5 flex items-center gap-4 sm:mt-7 sm:gap-6">
+            <span className="h-px w-10 bg-antique-gold sm:w-12" aria-hidden="true" />
+            <p className="font-opening-sans text-sm font-light tracking-[0.24em] text-ink sm:text-base">
+              {event.weddingDateLabel}
+            </p>
+          </motion.div>
+        </div>
 
         <motion.div
           {...step(3)}
-          className="glass-card mt-10 w-full max-w-sm rounded-2xl px-6 py-6"
-          style={{
-            background: "color-mix(in oklab, var(--mocha) 28%, transparent)",
-            borderColor: "color-mix(in oklab, var(--champagne) 32%, transparent)",
-          }}
+          className="w-full max-w-sm justify-self-center lg:justify-self-end"
         >
-          <p className="text-[0.7rem] tracking-[0.3em] text-beige/70 uppercase">Kepada Yth.</p>
-          <p className="mt-2 text-sm text-beige/85">Bapak/Ibu/Saudara/i</p>
-          <p className="mt-3 font-serif text-2xl text-cream sm:text-3xl">
-            {guestName || "Tamu Undangan"}
-          </p>
-        </motion.div>
+          <div className="border border-antique-gold/25 bg-paper-muted/65 px-6 py-6 text-center shadow-[0_24px_70px_-45px_var(--ink)] backdrop-blur-sm sm:px-8 sm:py-8 lg:text-right">
+            <p className="font-opening-sans text-[0.6rem] tracking-[0.2em] text-ink/55 uppercase sm:text-[0.65rem]">
+              Kepada Yth. Bapak/Ibu/Saudara/i
+            </p>
+            <p className="mt-4 break-words font-opening-serif text-xl italic leading-snug text-ink sm:text-2xl">
+              {guestName || "Tamu Undangan"}
+            </p>
 
-        <motion.div {...step(4)} className="mt-9">
-          <motion.button
-            type="button"
-            onClick={handleOpen}
-            whileTap={{ scale: 0.94 }}
-            whileHover={{ y: -2 }}
-            className="group inline-flex items-center gap-3 rounded-full border border-champagne/50 bg-champagne/10 px-8 py-3.5 text-[0.7rem] tracking-[0.35em] text-cream uppercase backdrop-blur-sm transition-colors hover:bg-champagne/20 focus-visible:ring-2 focus-visible:ring-champagne focus-visible:ring-offset-2 focus-visible:ring-offset-transparent focus-visible:outline-none"
-          >
-            <Mail className="size-4 shrink-0" aria-hidden="true" />
-            Buka Undangan
-          </motion.button>
+            <MotionButton
+              type="button"
+              onClick={handleOpen}
+              disabled={leaving}
+              whileTap={{ scale: 0.97 }}
+              className="mt-6 h-auto w-full rounded-none bg-ink px-6 py-4 font-opening-sans text-[0.65rem] font-medium tracking-[0.2em] text-paper uppercase shadow-lg hover:bg-antique-gold sm:w-auto"
+            >
+              <Mail className="size-4" aria-hidden="true" />
+              Buka Undangan
+            </MotionButton>
+          </div>
+          <p className="mt-3 text-center font-opening-sans text-[0.55rem] tracking-[0.08em] text-antique-gold/75 uppercase lg:text-right">
+            Mohon maaf jika ada kesalahan penulisan nama atau gelar
+          </p>
         </motion.div>
       </div>
     </motion.section>
@@ -140,15 +139,7 @@ function WayangRise({
   delay: number;
 }) {
   const dir = side === "left" ? 1 : -1;
-  const baseRotate = side === "left" ? 22 : -19;
-
-  const rest = {
-    y: ["6%", "-2%", "0%"],
-    x: [`${18 * dir}%`, `${-3 * dir}%`, "0%"],
-    rotate: [baseRotate + 10 * dir, baseRotate - 3 * dir, baseRotate],
-    scale: [0.86, 1.03, 1],
-    opacity: [0, 0.85, 0.75],
-  };
+  const baseRotate = side === "left" ? 12 : -12;
 
   return (
     <motion.img
@@ -159,30 +150,27 @@ function WayangRise({
       height={1408}
       className={`pointer-events-none absolute bottom-0 select-none ${
         side === "left"
-          ? "-left-[30%] sm:-left-[16%] lg:-left-[20%]"
-          : "-right-[30%] sm:-right-[16%] lg:-right-[18%]"
-      } h-[58vh] w-auto origin-bottom opacity-0 sm:h-[72vh] lg:h-[64vh] xl:h-[70vh]`}
-      style={{ filter: "drop-shadow(0 30px 50px oklch(0.35 0.045 55 / 0.45))" }}
-      initial={{ y: "78%", x: `${34 * dir}%`, rotate: baseRotate + 16 * dir, scale: 0.8, opacity: 0 }}
+          ? "-left-[38%] opacity-[0.13] sm:-left-[22%] md:-left-[12%] md:opacity-[0.11]"
+          : "-right-[34%] opacity-[0.16] sm:-right-[18%] md:-right-[9%] md:opacity-[0.14]"
+      } h-[48vh] w-auto origin-bottom mix-blend-multiply sm:h-[62vh] md:h-[68vh] lg:h-[80vh]`}
+      initial={
+        reduced
+          ? { opacity: side === "left" ? 0.11 : 0.14 }
+          : { y: "12%", x: `${12 * dir}%`, rotate: baseRotate + 4 * dir, opacity: 0 }
+      }
       animate={
         reduced
-          ? { opacity: leaving ? 0 : 0.6, y: "0%", x: "0%", rotate: baseRotate, scale: 1 }
+          ? { opacity: leaving ? 0 : side === "left" ? 0.11 : 0.14 }
           : leaving
-            ? {
-                y: "-115%",
-                x: `${-26 * dir}%`,
-                rotate: baseRotate - 12 * dir,
-                scale: 1.1,
-                opacity: 0,
-              }
-            : rest
+            ? { y: "-16%", x: `${-8 * dir}%`, opacity: 0 }
+            : { y: "0%", x: "0%", rotate: baseRotate, opacity: side === "left" ? 0.11 : 0.14 }
       }
       transition={
         reduced
-          ? { duration: 0.3 }
+          ? { duration: 0.15 }
           : leaving
-            ? { duration: 1.4, ease: [0.65, 0, 0.35, 1] }
-            : { duration: 1, delay, ease: EASE, times: [0, 0.78, 1] }
+            ? { duration: 0.5, ease: EASE }
+            : { duration: 0.7, delay, ease: EASE }
       }
     />
   );
