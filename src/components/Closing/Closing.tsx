@@ -6,12 +6,7 @@ export function Closing() {
   const { closing, couple, event } = weddingConfig;
 
   return (
-    <footer className="grain relative overflow-hidden px-6 py-24 text-center sm:py-28">
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 -z-10"
-        style={{ background: "var(--gradient-opening)" }}
-      />
+    <footer className="grain relative overflow-hidden bg-ink px-6 py-24 text-center sm:py-28">
       <Reveal className="mx-auto max-w-xl">
         <p className="text-sm leading-relaxed text-beige/85">{closing.text}</p>
       </Reveal>
