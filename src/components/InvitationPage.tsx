@@ -9,8 +9,6 @@ import { LoveStory } from "@/components/LoveStory/LoveStory";
 import { Countdown } from "@/components/Countdown/Countdown";
 import { EventDetails } from "@/components/EventDetails/EventDetails";
 import { Gallery } from "@/components/Gallery/Gallery";
-import { VideoSection } from "@/components/Video/VideoSection";
-import { DressCode } from "@/components/DressCode/DressCode";
 import { Gift } from "@/components/Gift/Gift";
 import { RSVP } from "@/components/RSVP/RSVP";
 import { Closing } from "@/components/Closing/Closing";
@@ -57,8 +55,6 @@ export function InvitationPage({ initialGuestName = "" }: { initialGuestName?: s
             <Countdown />
             <EventDetails />
             <Gallery />
-            <VideoSection />
-            <DressCode />
             <Gift />
             <RSVP guestName={guestName} />
           </main>
