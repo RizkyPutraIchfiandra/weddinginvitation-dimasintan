@@ -61,9 +61,6 @@ export const weddingConfig = {
       { src: g4, alt: "Cincin pernikahan di atas kain sutra krem", orientation: "landscape" },
       { src: g6, alt: "Siluet pasangan saat senja", orientation: "landscape" },
     ] as GalleryImage[],
-    /* YouTube URL, MP4 URL, or empty string */
-    videoUrl: "https://www.youtube.com/watch?v=ScMzIvxBSi4",
-    videoPoster: g1,
     /* Lagu pernikahan (MP3). Dipakai jika spotifyUrl kosong. */
     musicUrl: weddingSong.url,
     /**
@@ -124,17 +121,6 @@ export const weddingConfig = {
     ] as BankAccount[],
     /* Replace with your QRIS image URL, or set to "" to hide */
     qris: "",
-  },
-  dressCode: {
-    style: "Formal · Earth Tone",
-    note: "Kami mengundang Anda mengenakan nuansa hangat bumi agar hari kami terasa selaras.",
-    swatches: [
-      { name: "Chocolate", token: "bg-chocolate" },
-      { name: "Mocha", token: "bg-mocha" },
-      { name: "Caramel", token: "bg-caramel" },
-      { name: "Beige", token: "bg-beige" },
-      { name: "Cream", token: "bg-cream" },
-    ],
   },
   closing: {
     text: "Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Anda berkenan hadir dan memberikan doa restu.",
