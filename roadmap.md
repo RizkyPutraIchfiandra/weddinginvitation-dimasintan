@@ -1,0 +1,3 @@
+- [ ] Hapus bagian video dari undangan dan pengaturannya.
+- [ ] Hapus bagian Formal · Earth Tone beserta pengaturannya.
+- [ ] Periksa tampilan undangan setelah dihapus.
