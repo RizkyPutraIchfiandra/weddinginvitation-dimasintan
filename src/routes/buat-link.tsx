@@ -4,7 +4,7 @@ import { Check, Copy, Download, FileSpreadsheet, Link2, Plus, Trash2 } from "luc
 import { toast } from "sonner";
 import { nameToSlug } from "@/lib/guestSlug";
 
-export const Route = createFileRoute("/admin")({
+export const Route = createFileRoute("/admin-link")({
   head: () => ({
     meta: [
       { title: "Generator Link Undangan" },
