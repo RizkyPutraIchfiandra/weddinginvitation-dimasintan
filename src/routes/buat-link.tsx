@@ -412,9 +412,32 @@ function LinkGenerator() {
             </button>
           </div>
         )}
-
+{/* Guest List Table for md+ screens */}
+<div className="hidden md:block overflow-x-auto mt-4">
+  <table className="min-w-full table-auto border-collapse">
+    <thead className="bg-ivory">
+      <tr>
+        {EXCEL_HEADERS.map((header) => (
+          <th key={header} className="px-4 py-2 text-left text-xs font-medium text-mocha border border-border">{header}</th>
+        ))}
+      </tr>
+    </thead>
+    <tbody>
+      {guests.map((g, idx) => (
+        <tr key={`${g.name}-${idx}`} className="odd:bg-ivory/70">
+          <td className="border border-border px-4 py-2 text-sm text-mocha">{g.no || idx + 1}</td>
+          <td className="border border-border px-4 py-2 text-sm font-serif text-espresso">{g.name}</td>
+          <td className="border border-border px-4 py-2 text-sm text-mocha">{g.related}</td>
+          <td className="border border-border px-4 py-2 text-sm text-mocha">{g.bagian}</td>
+          <td className="border border-border px-4 py-2 text-sm text-mocha">{g.mempelai}</td>
+          <td className="border border-border px-4 py-2 text-xs text-mocha"><a href={buildLink(g.name)} target="_blank" rel="noopener noreferrer" className="text-chocolate underline">{buildLink(g.name)}</a></td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
         {/* Guest List Cards */}
-        <ul className="mt-4 space-y-3">
+        <ul className="mt-4 space-y-3 md:hidden">
           {guests.length === 0 && (
             <li className="rounded-xl border border-dashed border-caramel/40 px-4 py-6 text-center text-xs text-mocha/70">
               Belum ada tamu. Upload file Excel atau ketik nama lalu tekan Tambah.
