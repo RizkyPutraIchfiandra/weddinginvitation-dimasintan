@@ -45,7 +45,8 @@ function LinkGenerator() {
     try {
       const XLSX = await import("xlsx");
       const wb = XLSX.read(await file.arrayBuffer());
-      const ws = wb.Sheets[wb.SheetNames[0]];
+      const ws = wb.Sheets[wb.SheetNames[0] ?? ""];
+      if (!ws) throw new Error("no sheet");
       const rows = XLSX.utils.sheet_to_json<unknown[]>(ws, { header: 1, blankrows: false });
       const first = String(rows[0]?.[0] ?? "").trim().toLowerCase();
       const hasHeader = ["nama", "name", "nama tamu", "tamu"].includes(first);
