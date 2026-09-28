@@ -66,7 +66,7 @@ export function Hero() {
             {event.weddingDateLabel}
           </p>
           <p className="mt-3 text-xs tracking-[0.2em] text-mocha/70 uppercase">
-            {event.venueName} · Yogyakarta
+            {event.venueName} · Kota Baru, Karawang
           </p>
         </motion.div>
       </motion.div>

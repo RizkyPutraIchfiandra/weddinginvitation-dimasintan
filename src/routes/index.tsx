@@ -4,7 +4,7 @@ import { weddingConfig } from "@/data/weddingConfig";
 
 const { couple, event } = weddingConfig;
 const TITLE = `${couple.groomName} & ${couple.brideName} — Undangan Pernikahan`;
-const DESC = `Dengan sukacita kami mengundang Anda ke pernikahan ${couple.groomFullName} & ${couple.brideFullName}, ${event.weddingDayLabel} di ${event.venueName}, Yogyakarta.`;
+const DESC = `Dengan sukacita kami mengundang Anda ke pernikahan ${couple.groomFullName} & ${couple.brideFullName}, ${event.weddingDayLabel} di ${event.venueName}, Kota Baru, Karawang.`;
 
 export const Route = createFileRoute("/")({
   head: () => ({
