@@ -39,6 +39,50 @@ function LinkGenerator() {
 
   const buildLink = (guest: string) => `${baseUrl}/${nameToSlug(guest)}`;
 
+  const [bulk, setBulk] = useState<{ wb: import("xlsx").WorkBook; fileName: string; count: number } | null>(null);
+
+  const handleFile = async (file: File) => {
+    try {
+      const XLSX = await import("xlsx");
+      const wb = XLSX.read(await file.arrayBuffer());
+      const ws = wb.Sheets[wb.SheetNames[0]];
+      const rows = XLSX.utils.sheet_to_json<unknown[]>(ws, { header: 1, blankrows: false });
+      const first = String(rows[0]?.[0] ?? "").trim().toLowerCase();
+      const hasHeader = ["nama", "name", "nama tamu", "tamu"].includes(first);
+      const out: unknown[][] = [["Nama", "Link Undangan"]];
+      let count = 0;
+      rows.slice(hasHeader ? 1 : 0).forEach((r) => {
+        const n = String(r?.[0] ?? "").trim();
+        if (!n || !nameToSlug(n)) return;
+        out.push([n, buildLink(n)]);
+        count++;
+      });
+      if (!count) {
+        toast.error("Tidak ada nama di kolom pertama");
+        return;
+      }
+      const newWb = XLSX.utils.book_new();
+      const newWs = XLSX.utils.aoa_to_sheet(out);
+      newWs["!cols"] = [{ wch: 32 }, { wch: 60 }];
+      XLSX.utils.book_append_sheet(newWb, newWs, "Link Undangan");
+      setBulk({ wb: newWb, fileName: file.name.replace(/\.[^.]+$/, ""), count });
+      setGuests((prev) => [
+        ...prev,
+        ...out.slice(1).map((r) => String(r[0])).filter((n) => !prev.includes(n)),
+      ]);
+      toast.success(`${count} link berhasil dibuat`);
+    } catch {
+      toast.error("File tidak bisa dibaca. Gunakan .xlsx, .xls, atau .csv");
+    }
+  };
+
+  const downloadBulk = async () => {
+    if (!bulk) return;
+    const XLSX = await import("xlsx");
+    XLSX.writeFile(bulk.wb, `${bulk.fileName}-dengan-link.xlsx`);
+  };
+
+
 
   const addGuest = () => {
     const trimmed = name.trim();
@@ -91,6 +135,34 @@ function LinkGenerator() {
           <p className="mt-2 text-[0.65rem] text-mocha/60">
             Ganti ke domain final kalau nanti pakai domain sendiri.
           </p>
+        </div>
+
+        <div className="mt-6 rounded-xl border border-dashed border-caramel/50 bg-ivory/60 p-4">
+          <p className="text-[0.65rem] tracking-[0.15em] text-mocha uppercase">
+            Upload daftar tamu (Excel / CSV)
+          </p>
+          <p className="mt-1 text-[0.7rem] text-mocha/70">
+            Tulis nama tamu di kolom pertama. Hasilnya file Excel dengan link di kolom sebelahnya.
+          </p>
+          <input
+            type="file"
+            accept=".xlsx,.xls,.csv"
+            onChange={(e) => {
+              const f = e.target.files?.[0];
+              if (f) handleFile(f);
+              e.target.value = "";
+            }}
+            className="mt-3 block w-full text-xs text-mocha file:mr-3 file:rounded-lg file:border-0 file:bg-chocolate file:px-3 file:py-2 file:text-ivory"
+          />
+          {bulk && (
+            <button
+              type="button"
+              onClick={downloadBulk}
+              className="mt-3 w-full rounded-xl bg-caramel px-4 py-3 text-xs tracking-[0.15em] text-ivory uppercase hover:bg-chocolate"
+            >
+              Download Excel ({bulk.count} link)
+            </button>
+          )}
         </div>
 
         <div className="mt-4 flex gap-2">
