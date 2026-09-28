@@ -8,8 +8,8 @@ function toICSDate(date: Date) {
 
 function buildTimes() {
   const start = new Date(weddingConfig.event.weddingDate);
-  // Akad pagi sampai selesai resepsi (± 6 jam)
-  const end = new Date(start.getTime() + 6 * 60 * 60 * 1000);
+  // Akad 09.00 sampai akhir resepsi 16.00 (± 7 jam)
+  const end = new Date(start.getTime() + 7 * 60 * 60 * 1000);
   return { start, end };
 }
 
