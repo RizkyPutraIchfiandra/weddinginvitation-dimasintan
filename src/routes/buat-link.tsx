@@ -4,7 +4,7 @@ import { Check, Copy, Download, FileSpreadsheet, Link2, Plus, Trash2 } from "luc
 import { toast } from "sonner";
 import { nameToSlug } from "@/lib/guestSlug";
 
-export const Route = createFileRoute("/admin")({
+export const Route = createFileRoute("/buat-link")({
   head: () => ({
     meta: [
       { title: "Generator Link Undangan" },
@@ -52,7 +52,7 @@ function LinkGenerator() {
     [baseInput],
   );
 
-  const buildLink = (guestName: string) => `${baseUrl}/${nameToSlug(guestName)}`;
+  const buildLink = (guestName: string) => `${baseUrl}/invite/${nameToSlug(guestName)}`;
 
   const [bulk, setBulk] = useState<{ wb: import("xlsx").WorkBook; fileName: string; count: number } | null>(null);
 
