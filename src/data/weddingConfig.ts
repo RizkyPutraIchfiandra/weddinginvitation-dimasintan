@@ -1,19 +1,9 @@
-import bridePhotoAsset from "@/assets/photos/bride.jpg.asset.json";
-const bridePhoto = bridePhotoAsset.url;
-import groomPhotoAsset from "@/assets/photos/groom.jpg.asset.json";
-const groomPhoto = groomPhotoAsset.url;
-import g1Asset from "@/assets/photos/g1.jpg.asset.json";
-const g1 = g1Asset.url;
-import g2Asset from "@/assets/photos/g2.jpg.asset.json";
-const g2 = g2Asset.url;
-import g3Asset from "@/assets/photos/g3.jpg.asset.json";
-const g3 = g3Asset.url;
-import g4Asset from "@/assets/photos/g4.jpg.asset.json";
-const g4 = g4Asset.url;
-import g5Asset from "@/assets/photos/g5.jpg.asset.json";
-const g5 = g5Asset.url;
-import g6Asset from "@/assets/photos/g6.jpg.asset.json";
-const g6 = g6Asset.url;
+import bridePhoto from "@/assets/photos/Solo1.jpg";
+import groomPhoto from "@/assets/photos/Solo2.jpg";
+import bareng1 from "@/assets/photos/Bareng1.jpg";
+import bareng2 from "@/assets/photos/Bareng2.jpg";
+import bareng3 from "@/assets/photos/Bareng3.jpg";
+import bareng4 from "@/assets/photos/Bareng4.jpg";
 import weddingSong from "@/assets/audio/wedding-song.mp3.asset.json";
 
 export type GalleryImage = {
@@ -49,18 +39,16 @@ export const weddingConfig = {
     venueName: "Kediaman Mempelai Wanita",
     venueAddress:
       "Desa Pangulah Baru RT/RW 02/03, Kp. Kaliasin, Kota Baru, Karawang, Jawa Barat (Depan Balai Desa Pangulah Baru)",
-    latitude: -6.3775,
-    longitude: 107.4954,
-    mapsUrl: "https://www.google.com/maps/search/?api=1&query=-6.3775,107.4954",
+    latitude: -6.385077,
+    longitude: 107.498802,
+    mapsUrl: "https://maps.app.goo.gl/nRW52SoLKEcYsKUv5",
   },
   media: {
     galleryImages: [
-      { src: g1, alt: "Pasangan berjalan di padang saat matahari terbenam", orientation: "landscape" },
-      { src: g3, alt: "Pasangan berpelukan di halaman rumah Jawa", orientation: "portrait" },
-      { src: g2, alt: "Genggaman tangan pasangan dengan kain batik", orientation: "square" },
-      { src: g5, alt: "Mempelai wanita memegang buket bunga kering", orientation: "portrait" },
-      { src: g4, alt: "Cincin pernikahan di atas kain sutra krem", orientation: "landscape" },
-      { src: g6, alt: "Siluet pasangan saat senja", orientation: "landscape" },
+      { src: bareng1, alt: "Momen Dimas & Intan 1", orientation: "portrait" },
+      { src: bareng2, alt: "Momen Dimas & Intan 2", orientation: "portrait" },
+      { src: bareng3, alt: "Momen Dimas & Intan 3", orientation: "portrait" },
+      { src: bareng4, alt: "Momen Dimas & Intan 4", orientation: "portrait" },
     ] as GalleryImage[],
     /* Lagu pernikahan (MP3). Dipakai jika spotifyUrl kosong. */
     musicUrl: weddingSong.url,
@@ -83,29 +71,29 @@ export const weddingConfig = {
   },
   story: [
     {
-      year: "2021",
-      title: "First Meet",
-      text: "Sebuah pertemuan sederhana di sebuah pameran seni di Yogyakarta, diawali dengan percakapan tentang wayang.",
+      year: "MEI 2026",
+      title: "Jarak yang Mempertemukan",
+      text: "Bermula dari perkenalan sederhana selepas hangatnya momen Idul Fitri. Meski terbentang oleh jarak, percakapan santai yang mengalir tanpa henti perlahan membuka jalan bagi dua hati yang sebelumnya tak saling mengenal.",
     },
     {
-      year: "2022",
-      title: "First Date",
-      text: "Kopi sore yang berubah menjadi obrolan panjang sampai lampu jalan menyala satu per satu.",
+      year: "JUNI 2026",
+      title: "Temu Pertama & Hati yang Cocok",
+      text: "Hari ketika jarak akhirnya runtuh dalam sebuah pertemuan. Dari obrolan pertama, senyum canggung, hingga tawa lepas, ada kenyamanan luar biasa yang membuat kami yakin bahwa kami ditakdirkan untuk sejalan.",
     },
     {
-      year: "2023",
-      title: "Growing Together",
-      text: "Belajar mendengar, belajar bersabar, dan menemukan rumah pada satu sama lain.",
+      year: "AGUSTUS 2026",
+      title: "Saling Menjaga & Menguatkan",
+      text: "Di tengah padatnya hari dan lelahnya rutinitas pekerjaan, kami selalu memilih untuk saling hadir. Menjadi tempat pulang yang menenangkan, saling membantu, dan saling menguatkan dalam setiap langkah.",
     },
     {
-      year: "2025",
-      title: "The Proposal",
-      text: "Di bawah langit senja Kotagede, sebuah pertanyaan diajukan dan dijawab dengan air mata bahagia.",
+      year: "OKTOBER 2026",
+      title: "Sebuah Janji & Kepastian",
+      text: "Setelah melewati banyak cerita dan doa yang dipanjatkan, niat tulus pun diikrarkan. Mengubah rasa nyaman dan cinta yang tumbuh menjadi sebuah komitmen kuat untuk melangkah bersama selamanya.",
     },
     {
-      year: "2026",
-      title: "Our Wedding",
-      text: "Hari yang kami nantikan, dan kami ingin Anda ada di dalamnya.",
+      year: "DESEMBER 2026",
+      title: "Menuju Lembaran Abadi",
+      text: "Dua insan yang bermula dari jarak, kini dipersatukan dalam ikatan suci pernikahan. Hari yang kami syukuri, dan kami sangat berbahagia menyambut momen sakral ini bersama Anda.",
     },
   ] as StoryChapter[],
   quote: {
