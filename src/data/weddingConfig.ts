@@ -29,28 +29,29 @@ export type BankAccount = { bank: string; holder: string; number: string };
 export const weddingConfig = {
   couple: {
     brideName: "Intan",
-    brideFullName: "Intan",
+    brideFullName: "Ai Intan Sunarsih",
     brideNickname: "Intan",
-    brideParents: "Putri kedua dari Bapak Hendra Maheswara & Ibu Retno Wulandari",
+    brideParents: "Putri dari Bapak Suwanta & Ibu Neng Mumun",
     bridePhoto,
     groomName: "Dimas",
-    groomFullName: "Dimas",
+    groomFullName: "Dimas Ichfianto",
     groomNickname: "Dimas",
-    groomParents: "Putra pertama dari Bapak Budi Adiwijaya & Ibu Sri Handayani",
+    groomParents: "Putra dari Bapak Ichsananto & Almh. Ibu Fitri Ariana",
     groomPhoto,
   },
   event: {
     /* ISO local time of the ceremony — countdown targets this */
-    weddingDate: "2026-12-06T08:00:00+07:00",
+    weddingDate: "2026-12-06T09:00:00+07:00",
     weddingDateLabel: "06 . 12 . 2026",
     weddingDayLabel: "Sunday, 6 December 2026",
-    akadTime: "08.00 – 10.00 WIB",
-    receptionTime: "11.00 – 14.00 WIB",
-    venueName: "Pendopo Agung Kusuma",
-    venueAddress: "Jl. Melati Raya No. 12, Kotagede, Yogyakarta 55172, Indonesia",
-    latitude: -7.8236,
-    longitude: 110.3986,
-    mapsUrl: "https://www.google.com/maps/search/?api=1&query=-7.8236,110.3986",
+    akadTime: "09.00 – selesai WIB",
+    receptionTime: "10.00 – 16.00 WIB",
+    venueName: "Kediaman Mempelai Wanita",
+    venueAddress:
+      "Desa Pangulah Baru RT/RW 02/03, Kp. Kaliasin, Kota Baru, Karawang, Jawa Barat (Depan Balai Desa Pangulah Baru)",
+    latitude: -6.3775,
+    longitude: 107.4954,
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=-6.3775,107.4954",
   },
   media: {
     galleryImages: [
