@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Reveal } from "@/components/common/Reveal";
 import { SectionTitle } from "@/components/common/SectionTitle";
 import { weddingConfig } from "@/data/weddingConfig";
+import { useLanguage } from "@/lib/i18n";
 
 function diff(target: number) {
   const ms = Math.max(0, target - Date.now());
@@ -14,6 +15,7 @@ function diff(target: number) {
 }
 
 export function Countdown() {
+  const { t } = useLanguage();
   const target = new Date(weddingConfig.event.weddingDate).getTime();
   const [time, setTime] = useState(() => diff(target));
 
@@ -23,15 +25,15 @@ export function Countdown() {
   }, [target]);
 
   const cells = [
-    { label: "Days", value: time.days },
-    { label: "Hours", value: time.hours },
-    { label: "Minutes", value: time.minutes },
-    { label: "Seconds", value: time.seconds },
+    { label: t.countdown.days, value: time.days, live: false },
+    { label: t.countdown.hours, value: time.hours, live: false },
+    { label: t.countdown.minutes, value: time.minutes, live: false },
+    { label: t.countdown.seconds, value: time.seconds, live: true },
   ];
 
   return (
     <section className="relative px-6 py-24 sm:py-28">
-      <SectionTitle eyebrow="Countdown" title="Menuju Hari Bahagia" />
+      <SectionTitle eyebrow={t.countdown.eyebrow} title={t.countdown.title} />
 
       <div className="mx-auto mt-12 grid max-w-2xl grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
         {cells.map((cell, i) => (
@@ -39,7 +41,7 @@ export function Countdown() {
             <div className="glass-card rounded-2xl px-2 py-6 text-center">
               <p
                 className="font-serif text-4xl text-chocolate tabular-nums sm:text-5xl"
-                aria-live={cell.label === "Seconds" ? "off" : undefined}
+                aria-live={cell.live ? "off" : undefined}
               >
                 {String(cell.value).padStart(2, "0")}
               </p>
@@ -53,7 +55,7 @@ export function Countdown() {
 
       <Reveal delay={0.3}>
         <p className="mt-8 text-center text-xs tracking-[0.25em] text-mocha/80 uppercase">
-          {weddingConfig.event.weddingDayLabel}
+          {t.event.day}
         </p>
       </Reveal>
     </section>

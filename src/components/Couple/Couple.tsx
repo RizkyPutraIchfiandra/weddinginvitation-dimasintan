@@ -2,6 +2,7 @@ import { Reveal } from "@/components/common/Reveal";
 import { SectionTitle } from "@/components/common/SectionTitle";
 import { FloralDivider } from "@/components/FloralDecorations/FloralDecorations";
 import { weddingConfig } from "@/data/weddingConfig";
+import { useLanguage } from "@/lib/i18n";
 
 function Profile({
   photo,
@@ -40,12 +41,13 @@ function Profile({
 
 export function Couple() {
   const { couple } = weddingConfig;
+  const { t } = useLanguage();
   return (
     <section id="couple" className="paper relative px-6 py-24 sm:py-28">
       <SectionTitle
-        eyebrow="Bismillahirrahmanirrahim"
-        title="Meet The Couple"
-        subtitle="Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud menyelenggarakan pernikahan putra-putri kami."
+        eyebrow={t.couple.eyebrow}
+        title={t.couple.title}
+        subtitle={t.couple.subtitle}
       />
 
       <div className="mx-auto mt-16 grid max-w-4xl gap-16 md:grid-cols-[1fr_auto_1fr] md:items-start md:gap-8">
@@ -53,7 +55,7 @@ export function Couple() {
           photo={couple.groomPhoto}
           fullName={couple.groomFullName}
           nickname={couple.groomNickname}
-          parents={couple.groomParents}
+          parents={t.couple.groomParents}
           delay={0}
         />
         <Reveal delay={0.15} className="flex items-center justify-center md:h-full">
@@ -63,7 +65,7 @@ export function Couple() {
           photo={couple.bridePhoto}
           fullName={couple.brideFullName}
           nickname={couple.brideNickname}
-          parents={couple.brideParents}
+          parents={t.couple.brideParents}
           delay={0.12}
         />
       </div>
