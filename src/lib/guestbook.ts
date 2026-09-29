@@ -130,9 +130,9 @@ export const guestbookStore: GuestbookStore = endpoint
   ? sheetsStore(endpoint)
   : localStore;
 
-export function formatWishTime(iso: string) {
+export function formatWishTime(iso: string, language: "id" | "en" = "id") {
   try {
-    return new Intl.DateTimeFormat("id-ID", {
+    return new Intl.DateTimeFormat(language === "id" ? "id-ID" : "en-IN", {
       day: "numeric",
       month: "long",
       year: "numeric",

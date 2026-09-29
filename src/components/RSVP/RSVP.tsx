@@ -10,8 +10,10 @@ import {
   type Attendance,
   type WishEntry,
 } from "@/lib/guestbook";
+import { useLanguage } from "@/lib/i18n";
 
 export function RSVP({ guestName }: { guestName: string }) {
+  const { language, t } = useLanguage();
   const [entries, setEntries] = useState<WishEntry[]>([]);
   const [name, setName] = useState(guestName);
   const [attendance, setAttendance] = useState<Attendance>("hadir");
@@ -30,7 +32,7 @@ export function RSVP({ guestName }: { guestName: string }) {
   const submit = async (e: FormEvent) => {
     e.preventDefault();
     if (!name.trim() || !message.trim()) {
-      toast.error("Mohon lengkapi nama dan ucapan Anda");
+      toast.error(t.rsvp.required);
       return;
     }
     setSending(true);
@@ -43,9 +45,9 @@ export function RSVP({ guestName }: { guestName: string }) {
       });
       setEntries((prev) => [created, ...prev]);
       setMessage("");
-      toast.success("Terima kasih, ucapan Anda telah terkirim");
+      toast.success(t.rsvp.success);
     } catch {
-      toast.error("Gagal mengirim, coba lagi sebentar lagi");
+      toast.error(t.rsvp.error);
     } finally {
       setSending(false);
     }
@@ -57,9 +59,9 @@ export function RSVP({ guestName }: { guestName: string }) {
   return (
     <section id="rsvp" className="paper relative overflow-hidden px-6 py-24 sm:py-28">
       <SectionTitle
-        eyebrow="Konfirmasi Kehadiran"
-        title="RSVP & Wishes"
-        subtitle="Kehadiran dan doa restu Anda sangat berarti bagi kami."
+        eyebrow={t.rsvp.eyebrow}
+        title={t.rsvp.title}
+        subtitle={t.rsvp.subtitle}
       />
 
       <div className="mx-auto mt-14 grid max-w-5xl gap-8 lg:grid-cols-2">
@@ -67,24 +69,24 @@ export function RSVP({ guestName }: { guestName: string }) {
           <form onSubmit={submit} className="space-y-5">
             <div>
               <label htmlFor="rsvp-name" className="eyebrow block">
-                Nama
+                {t.rsvp.name}
               </label>
               <input
                 id="rsvp-name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                placeholder="Nama Anda"
+                placeholder={t.rsvp.namePlaceholder}
                 className={`mt-3 ${field}`}
               />
             </div>
 
             <div>
-              <span className="eyebrow block">Kehadiran</span>
+              <span className="eyebrow block">{t.rsvp.attendance}</span>
               <div className="mt-3 grid grid-cols-2 gap-3">
                 {(
                   [
-                    { key: "hadir", label: "Hadir", Icon: UserCheck },
-                    { key: "tidak-hadir", label: "Tidak Hadir", Icon: UserX },
+                    { key: "hadir", label: t.rsvp.attending, Icon: UserCheck },
+                    { key: "tidak-hadir", label: t.rsvp.notAttending, Icon: UserX },
                   ] as const
                 ).map((opt) => {
                   const active = attendance === opt.key;
@@ -117,7 +119,7 @@ export function RSVP({ guestName }: { guestName: string }) {
                   className="overflow-hidden"
                 >
                   <label htmlFor="rsvp-guests" className="eyebrow block">
-                    Jumlah Tamu
+                    {t.rsvp.guests}
                   </label>
                   <select
                     id="rsvp-guests"
@@ -127,7 +129,7 @@ export function RSVP({ guestName }: { guestName: string }) {
                   >
                     {[1, 2, 3, 4, 5].map((n) => (
                       <option key={n} value={n}>
-                        {n} orang
+                        {n} {t.rsvp.person}
                       </option>
                     ))}
                   </select>
@@ -137,14 +139,14 @@ export function RSVP({ guestName }: { guestName: string }) {
 
             <div>
               <label htmlFor="rsvp-message" className="eyebrow block">
-                Ucapan & Doa
+                {t.rsvp.wishes}
               </label>
               <textarea
                 id="rsvp-message"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 rows={4}
-                placeholder="Tuliskan ucapan terbaik Anda..."
+                placeholder={t.rsvp.wishesPlaceholder}
                 className={`mt-3 resize-none ${field}`}
               />
             </div>
@@ -155,14 +157,14 @@ export function RSVP({ guestName }: { guestName: string }) {
               className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-chocolate px-8 py-3.5 text-[0.68rem] tracking-[0.3em] text-ivory uppercase transition-colors hover:bg-espresso focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none disabled:opacity-60"
             >
               <Send className="size-4" aria-hidden="true" />
-              {sending ? "Mengirim..." : "Kirim Ucapan"}
+              {sending ? t.rsvp.sending : t.rsvp.send}
             </button>
           </form>
         </Reveal>
 
         <Reveal delay={0.12} className="flex flex-col">
           <p className="eyebrow text-center lg:text-left">
-            {entries.length} Ucapan
+            {entries.length} {t.rsvp.wishCount}
           </p>
           <ul className="mt-5 max-h-[30rem] space-y-4 overflow-y-auto pr-1">
             <AnimatePresence initial={false}>
@@ -183,12 +185,12 @@ export function RSVP({ guestName }: { guestName: string }) {
                           : "bg-cream text-mocha/80"
                       }`}
                     >
-                      {w.attendance === "hadir" ? "Hadir" : "Tidak Hadir"}
+                      {w.attendance === "hadir" ? t.rsvp.attending : t.rsvp.notAttending}
                     </span>
                   </div>
                   <p className="mt-2 text-sm leading-relaxed text-mocha">{w.message}</p>
                   <p className="mt-3 text-[0.6rem] tracking-[0.2em] text-mocha/60 uppercase">
-                    {formatWishTime(w.createdAt)}
+                    {formatWishTime(w.createdAt, language)}
                   </p>
                 </motion.li>
               ))}

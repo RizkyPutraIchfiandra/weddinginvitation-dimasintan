@@ -1,21 +1,23 @@
 import { Reveal } from "@/components/common/Reveal";
 import { GoldRule } from "@/components/FloralDecorations/FloralDecorations";
 import { weddingConfig } from "@/data/weddingConfig";
+import { useLanguage } from "@/lib/i18n";
 
 export function Closing() {
-  const { closing, couple, event } = weddingConfig;
+  const { couple, event } = weddingConfig;
+  const { t } = useLanguage();
 
   return (
     <footer className="relative overflow-hidden bg-beige px-6 py-24 text-center sm:py-28">
       <Reveal className="mx-auto max-w-xl">
-        <p className="text-sm leading-relaxed text-mocha">{closing.text}</p>
+        <p className="text-sm leading-relaxed text-mocha">{t.closing.text}</p>
       </Reveal>
       <Reveal delay={0.1}>
         <GoldRule className="mt-8" />
       </Reveal>
       <Reveal delay={0.16}>
         <p className="mt-8 text-[0.65rem] tracking-[0.4em] text-mocha uppercase">
-          Kami yang berbahagia
+          {t.closing.happy}
         </p>
         <h2 className="mt-4 font-serif text-[clamp(2.4rem,10vw,4.5rem)] leading-[1] text-chocolate">
           {couple.groomName}
