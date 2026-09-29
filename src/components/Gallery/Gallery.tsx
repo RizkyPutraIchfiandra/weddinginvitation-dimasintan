@@ -49,11 +49,11 @@ export function Gallery() {
               type="button"
               onClick={() => setOpen(i)}
               className="h-full w-full focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
-              aria-label={`${t.gallery.enlarge}: ${img.alt}`}
+              aria-label={`${t.gallery.enlarge}: ${t.gallery.photo} ${i + 1}`}
             >
               <img
                 src={img.src}
-                alt={img.alt}
+                alt={`${t.gallery.photo} ${i + 1}`}
                 loading="lazy"
                 className="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.06]"
               />
@@ -111,7 +111,7 @@ export function Gallery() {
             <motion.img
               key={images[open]?.src}
               src={images[open]?.src}
-              alt={images[open]?.alt ?? ""}
+              alt={`${t.gallery.photo} ${open + 1}`}
               initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}

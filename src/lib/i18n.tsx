@@ -80,6 +80,8 @@ const copy = {
       close: "Tutup",
       previous: "Foto sebelumnya",
       next: "Foto berikutnya",
+      photo: "Momen Dimas & Intan",
+      qris: "Kode QRIS untuk hadiah pernikahan",
     },
     gift: {
       eyebrow: "Tanda Kasih",
@@ -194,6 +196,8 @@ const copy = {
       close: "Close",
       previous: "Previous photo",
       next: "Next photo",
+      photo: "Dimas & Intan moment",
+      qris: "QRIS code for the wedding gift",
     },
     gift: {
       eyebrow: "A Token of Love",

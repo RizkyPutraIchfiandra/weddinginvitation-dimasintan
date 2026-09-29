@@ -39,33 +39,33 @@ export function InvitationPage({ initialGuestName = "" }: { initialGuestName?: s
 
   return (
     <LanguageProvider>
-    <div className="relative">
-      <LanguageButton />
-      <AnimatePresence>
-        {!opened && (
-          <OpeningScreen key="opening" guestName={guestName} onOpen={() => setOpened(true)} />
-        )}
-      </AnimatePresence>
+      <div className="relative">
+        <LanguageButton />
+        <AnimatePresence>
+          {!opened && (
+            <OpeningScreen key="opening" guestName={guestName} onOpen={() => setOpened(true)} />
+          )}
+        </AnimatePresence>
 
-      {opened && (
-        <>
-          <Navigation />
-          <MusicPlayer autoStart />
-          <main>
-            <Hero />
-            <Quote />
-            <Couple />
-            <LoveStory />
-            <Countdown />
-            <EventDetails />
-            <Gallery />
-            <Gift />
-            <RSVP guestName={guestName} />
-          </main>
-          <Closing />
-        </>
-      )}
-    </div>
+        {opened && (
+          <>
+            <Navigation />
+            <MusicPlayer autoStart />
+            <main>
+              <Hero />
+              <Quote />
+              <Couple />
+              <LoveStory />
+              <Countdown />
+              <EventDetails />
+              <Gallery />
+              <Gift />
+              <RSVP guestName={guestName} />
+            </main>
+            <Closing />
+          </>
+        )}
+      </div>
     </LanguageProvider>
   );
 }

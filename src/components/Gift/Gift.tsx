@@ -55,7 +55,7 @@ export function Gift() {
 
       {gift.qris ? (
         <Reveal delay={0.15} className="mx-auto mt-8 max-w-xs text-center">
-          <img src={gift.qris} alt="Kode QRIS untuk hadiah pernikahan" className="rounded-2xl" />
+          <img src={gift.qris} alt={t.gallery.qris} className="rounded-2xl" />
         </Reveal>
       ) : null}
     </section>
