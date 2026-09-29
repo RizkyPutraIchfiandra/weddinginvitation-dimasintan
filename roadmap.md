@@ -4,4 +4,4 @@
 - [x] Ganti Wedding Gift menjadi satu rekening Bank Mandiri milik Dimas Ichfianto.
 - [x] Ganti lagu dengan Sampai Jadi Debu versi piano dan bersihkan aset lama.
 - [x] Tambahkan pilihan Bahasa Indonesia dan English untuk seluruh undangan publik.
-- [ ] Verifikasi perpindahan bahasa, pemutar lagu, rekening, RSVP, dan tampilan responsif.
+- [x] Verifikasi perpindahan bahasa, pemutar lagu, rekening, RSVP, dan tampilan responsif.

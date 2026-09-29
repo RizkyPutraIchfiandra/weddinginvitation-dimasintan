@@ -26,7 +26,7 @@ export function Gift() {
     <section id="gift" className="paper relative overflow-hidden px-6 py-24 sm:py-28">
       <SectionTitle eyebrow={t.gift.eyebrow} title={t.gift.title} subtitle={t.gift.note} />
 
-      <div className="mx-auto mt-14 grid max-w-3xl gap-5 sm:grid-cols-2">
+      <div className="mx-auto mt-14 grid max-w-xl gap-5">
         {gift.banks.map((b, i) => (
           <Reveal key={b.number} delay={i * 0.1} className="glass-card rounded-3xl px-7 py-8">
             <div className="flex items-center gap-3">
