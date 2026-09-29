@@ -7,6 +7,7 @@ const wayangFemale = wayangFemaleAsset.url;
 import wayangMaleAsset from "@/assets/wayang/wayang-male.png.asset.json";
 const wayangMale = wayangMaleAsset.url;
 import { weddingConfig } from "@/data/weddingConfig";
+import { useLanguage } from "@/lib/i18n";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 const MotionButton = motion.create(Button);
@@ -21,6 +22,7 @@ export function OpeningScreen({
   const reduced = useReducedMotion();
   const [leaving, setLeaving] = useState(false);
   const { couple, event } = weddingConfig;
+  const { t } = useLanguage();
 
   const handleOpen = () => {
     if (leaving) return;
@@ -36,7 +38,7 @@ export function OpeningScreen({
 
   return (
     <motion.section
-      aria-label="Pembuka undangan"
+      aria-label={t.opening.aria}
       className="grain fixed inset-0 z-50 overflow-hidden bg-paper text-ink"
       style={{ background: "var(--gradient-opening)" }}
       animate={leaving ? { opacity: 0 } : { opacity: 1 }}
@@ -67,7 +69,7 @@ export function OpeningScreen({
             {...step(0)}
             className="font-opening-sans text-[0.65rem] font-medium tracking-[0.4em] text-antique-gold uppercase sm:text-xs"
           >
-            The Wedding Of
+            {t.opening.wedding}
           </motion.p>
 
           <motion.h1
@@ -95,10 +97,10 @@ export function OpeningScreen({
         >
           <div className="border border-antique-gold/25 bg-paper-muted/65 px-6 py-6 text-center shadow-[0_24px_70px_-45px_var(--ink)] backdrop-blur-sm sm:px-8 sm:py-8 lg:text-right">
             <p className="font-opening-sans text-[0.6rem] tracking-[0.2em] text-ink/55 uppercase sm:text-[0.65rem]">
-              Kepada Yth. Bapak/Ibu/Saudara/i
+              {t.opening.addressed}
             </p>
             <p className="mt-4 break-words font-opening-serif text-xl italic leading-snug text-ink sm:text-2xl">
-              {guestName || "Tamu Undangan"}
+              {guestName || t.opening.guest}
             </p>
 
             <MotionButton
@@ -109,11 +111,11 @@ export function OpeningScreen({
               className="mt-6 h-auto w-full rounded-none bg-ink px-6 py-4 font-opening-sans text-[0.65rem] font-medium tracking-[0.2em] text-paper uppercase shadow-lg hover:bg-antique-gold sm:w-auto"
             >
               <Mail className="size-4" aria-hidden="true" />
-              Buka Undangan
+              {t.opening.open}
             </MotionButton>
           </div>
           <p className="mt-3 text-center font-opening-sans text-[0.55rem] tracking-[0.08em] text-antique-gold/75 uppercase lg:text-right">
-            Mohon maaf jika ada kesalahan penulisan nama atau gelar
+            {t.opening.note}
           </p>
         </motion.div>
       </div>

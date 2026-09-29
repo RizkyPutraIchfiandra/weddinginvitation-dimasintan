@@ -14,6 +14,8 @@ import { RSVP } from "@/components/RSVP/RSVP";
 import { Closing } from "@/components/Closing/Closing";
 import { MusicPlayer } from "@/components/MusicPlayer/MusicPlayer";
 import { weddingConfig } from "@/data/weddingConfig";
+import { LanguageProvider } from "@/lib/i18n";
+import { LanguageButton } from "@/components/LanguageButton/LanguageButton";
 
 export function InvitationPage({ initialGuestName = "" }: { initialGuestName?: string }) {
   const [opened, setOpened] = useState(false);
@@ -36,7 +38,9 @@ export function InvitationPage({ initialGuestName = "" }: { initialGuestName?: s
   }, [opened]);
 
   return (
+    <LanguageProvider>
     <div className="relative">
+      <LanguageButton />
       <AnimatePresence>
         {!opened && (
           <OpeningScreen key="opening" guestName={guestName} onOpen={() => setOpened(true)} />
@@ -62,5 +66,6 @@ export function InvitationPage({ initialGuestName = "" }: { initialGuestName?: s
         </>
       )}
     </div>
+    </LanguageProvider>
   );
 }
