@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Disc3, Pause, X } from "lucide-react";
 import { weddingConfig } from "@/data/weddingConfig";
+import { useLanguage } from "@/lib/i18n";
 
 /** Ubah link Spotify biasa menjadi URL embed player resmi. */
 function toSpotifyEmbed(url: string) {
@@ -16,6 +17,7 @@ function toSpotifyEmbed(url: string) {
 }
 
 export function MusicPlayer({ autoStart }: { autoStart: boolean }) {
+  const { t } = useLanguage();
   const ref = useRef<HTMLAudioElement>(null);
   const [playing, setPlaying] = useState(false);
   const [open, setOpen] = useState(false);
@@ -44,7 +46,7 @@ export function MusicPlayer({ autoStart }: { autoStart: boolean }) {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.9 }}
           whileTap={{ scale: 0.92 }}
-          aria-label={open ? "Tutup pemutar musik" : "Buka pemutar musik"}
+          aria-label={open ? t.music.close : t.music.open}
           aria-expanded={open}
           className={buttonClass}
         >
@@ -64,7 +66,7 @@ export function MusicPlayer({ autoStart }: { autoStart: boolean }) {
               className="glass-card fixed right-4 bottom-40 z-40 w-[19rem] max-w-[calc(100vw-2rem)] overflow-hidden rounded-2xl p-2 md:top-40 md:bottom-auto"
             >
               <iframe
-                title="Pemutar musik pernikahan"
+                title={t.music.title}
                 src={spotifyEmbed}
                 width="100%"
                 height="152"
@@ -105,7 +107,7 @@ export function MusicPlayer({ autoStart }: { autoStart: boolean }) {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.6, delay: 0.9 }}
         whileTap={{ scale: 0.92 }}
-        aria-label={playing ? "Jeda musik" : "Putar musik"}
+        aria-label={playing ? t.music.pause : t.music.play}
         aria-pressed={playing}
         className={buttonClass}
       >

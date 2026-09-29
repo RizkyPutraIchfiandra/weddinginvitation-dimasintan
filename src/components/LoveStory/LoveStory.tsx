@@ -3,8 +3,10 @@ import { motion, useScroll, useSpring } from "motion/react";
 import { Reveal } from "@/components/common/Reveal";
 import { SectionTitle } from "@/components/common/SectionTitle";
 import { weddingConfig } from "@/data/weddingConfig";
+import { useLanguage } from "@/lib/i18n";
 
 export function LoveStory() {
+  const { t } = useLanguage();
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -14,7 +16,7 @@ export function LoveStory() {
 
   return (
     <section id="story" className="relative bg-cream/50 px-6 py-24 sm:py-28">
-      <SectionTitle eyebrow="Perjalanan Kami" title="Our Story" />
+      <SectionTitle eyebrow={t.story.eyebrow} title={t.story.title} />
 
       <div ref={ref} className="relative mx-auto mt-16 max-w-2xl pl-10 sm:pl-0">
         {/* timeline rail */}
@@ -29,7 +31,7 @@ export function LoveStory() {
         </div>
 
         <ol className="space-y-14">
-          {weddingConfig.story.map((chapter, i) => (
+          {t.story.chapters.map((chapter, i) => (
             <Reveal as="li" key={chapter.year} delay={0.05} className="relative">
               <span
                 aria-hidden="true"

@@ -4,6 +4,7 @@ import wayangFemaleAsset from "@/assets/wayang/wayang-female.png.asset.json";
 const wayangFemale = wayangFemaleAsset.url;
 import { FloralCorner, GoldRule, Petals } from "@/components/FloralDecorations/FloralDecorations";
 import { weddingConfig } from "@/data/weddingConfig";
+import { useLanguage } from "@/lib/i18n";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -11,6 +12,7 @@ export function Hero() {
   const { couple, event } = weddingConfig;
   const ref = useRef<HTMLElement>(null);
   const reduced = useReducedMotion();
+  const { t } = useLanguage();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const wayangY = useTransform(scrollYProgress, [0, 1], ["0%", reduced ? "0%" : "-26%"]);
   const textY = useTransform(scrollYProgress, [0, 1], ["0%", reduced ? "0%" : "18%"]);
@@ -41,7 +43,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.15, ease: EASE }}
         >
-          The Wedding Of
+          {t.opening.wedding}
         </motion.p>
 
         <motion.h1
@@ -66,7 +68,7 @@ export function Hero() {
             {event.weddingDateLabel}
           </p>
           <p className="mt-3 text-xs tracking-[0.2em] text-mocha/70 uppercase">
-            {event.venueName} · Kota Baru, Karawang
+            {t.event.venue} · Kota Baru, Karawang
           </p>
         </motion.div>
       </motion.div>

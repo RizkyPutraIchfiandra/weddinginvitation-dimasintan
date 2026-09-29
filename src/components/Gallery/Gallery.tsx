@@ -4,6 +4,7 @@ import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Reveal } from "@/components/common/Reveal";
 import { SectionTitle } from "@/components/common/SectionTitle";
 import { weddingConfig } from "@/data/weddingConfig";
+import { useLanguage } from "@/lib/i18n";
 
 const spanFor = (o: string) =>
   o === "portrait" ? "row-span-2" : o === "landscape" ? "sm:col-span-2" : "";
@@ -11,6 +12,7 @@ const spanFor = (o: string) =>
 export function Gallery() {
   const images = weddingConfig.media.galleryImages;
   const [open, setOpen] = useState<number | null>(null);
+  const { t } = useLanguage();
 
   useEffect(() => {
     if (open === null) return;
@@ -30,9 +32,9 @@ export function Gallery() {
   return (
     <section id="gallery" className="relative bg-cream/50 px-6 py-24 sm:py-28">
       <SectionTitle
-        eyebrow="Momen Kami"
-        title="Gallery"
-        subtitle="Sekeping cerita yang kami rangkai sebelum hari bahagia tiba."
+        eyebrow={t.gallery.eyebrow}
+        title={t.gallery.title}
+        subtitle={t.gallery.subtitle}
       />
 
       <div className="mx-auto mt-14 grid max-w-5xl auto-rows-[170px] grid-cols-2 gap-3 sm:auto-rows-[210px] sm:grid-cols-4 sm:gap-4">
@@ -47,11 +49,11 @@ export function Gallery() {
               type="button"
               onClick={() => setOpen(i)}
               className="h-full w-full focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
-              aria-label={`Perbesar foto: ${img.alt}`}
+              aria-label={`${t.gallery.enlarge}: ${t.gallery.photo} ${i + 1}`}
             >
               <img
                 src={img.src}
-                alt={img.alt}
+                alt={`${t.gallery.photo} ${i + 1}`}
                 loading="lazy"
                 className="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.06]"
               />
@@ -74,19 +76,19 @@ export function Gallery() {
             onClick={() => setOpen(null)}
             role="dialog"
             aria-modal="true"
-            aria-label="Pratinjau foto"
+            aria-label={t.gallery.preview}
           >
             <button
               type="button"
               onClick={() => setOpen(null)}
-              aria-label="Tutup"
+              aria-label={t.gallery.close}
               className="absolute top-5 right-5 rounded-full border border-champagne/40 p-2 text-cream transition-colors hover:bg-cream/10"
             >
               <X className="size-5" />
             </button>
             <button
               type="button"
-              aria-label="Foto sebelumnya"
+              aria-label={t.gallery.previous}
               onClick={(e) => {
                 e.stopPropagation();
                 setOpen((i) => ((i ?? 0) - 1 + images.length) % images.length);
@@ -97,7 +99,7 @@ export function Gallery() {
             </button>
             <button
               type="button"
-              aria-label="Foto berikutnya"
+              aria-label={t.gallery.next}
               onClick={(e) => {
                 e.stopPropagation();
                 setOpen((i) => ((i ?? 0) + 1) % images.length);
@@ -109,7 +111,7 @@ export function Gallery() {
             <motion.img
               key={images[open]?.src}
               src={images[open]?.src}
-              alt={images[open]?.alt ?? ""}
+              alt={`${t.gallery.photo} ${open + 1}`}
               initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}

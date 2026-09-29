@@ -1,10 +1,17 @@
-import bridePhoto from "@/assets/photos/Solo1.jpg";
-import groomPhoto from "@/assets/photos/Solo2.jpg";
-import bareng1 from "@/assets/photos/Bareng1.jpg";
-import bareng2 from "@/assets/photos/Bareng2.jpg";
-import bareng3 from "@/assets/photos/Bareng3.jpg";
-import bareng4 from "@/assets/photos/Bareng4.jpg";
-import weddingSong from "@/assets/audio/wedding-song.mp3.asset.json";
+import bridePhotoAsset from "@/assets/photos/Solo1.jpg.asset.json";
+import groomPhotoAsset from "@/assets/photos/Solo2.jpg.asset.json";
+import bareng1Asset from "@/assets/photos/Bareng1.jpg.asset.json";
+import bareng2Asset from "@/assets/photos/Bareng2.jpg.asset.json";
+import bareng3Asset from "@/assets/photos/Bareng3.jpg.asset.json";
+import bareng4Asset from "@/assets/photos/Bareng4.jpg.asset.json";
+import weddingSong from "@/assets/audio/sampai-jadi-debu-piano.mp3.asset.json";
+
+const bridePhoto = bridePhotoAsset.url;
+const groomPhoto = groomPhotoAsset.url;
+const bareng1 = bareng1Asset.url;
+const bareng2 = bareng2Asset.url;
+const bareng3 = bareng3Asset.url;
+const bareng4 = bareng4Asset.url;
 
 export type GalleryImage = {
   src: string;
@@ -104,10 +111,7 @@ export const weddingConfig = {
   },
   gift: {
     note: "Doa restu Anda merupakan hadiah terindah bagi kami. Namun apabila ingin memberikan tanda kasih, kami menyediakan fitur Wedding Gift.",
-    banks: [
-      { bank: "Bank Mandiri", holder: "Raka Pratama", number: "1234567890" },
-      { bank: "BCA", holder: "Alya Putri", number: "0987654321" },
-    ] as BankAccount[],
+    banks: [{ bank: "Bank Mandiri", holder: "Dimas Ichfianto", number: "1330012957650" }] as BankAccount[],
     /* Replace with your QRIS image URL, or set to "" to hide */
     qris: "",
   },

@@ -4,8 +4,8 @@ import { weddingConfig } from "@/data/weddingConfig";
 import { slugToName } from "@/lib/guestSlug";
 
 const { couple, event } = weddingConfig;
-const TITLE = `${couple.groomName} & ${couple.brideName} — Undangan Pernikahan`;
-const DESC = `Dengan sukacita kami mengundang Anda ke pernikahan ${couple.groomFullName} & ${couple.brideFullName}, ${event.weddingDayLabel} di ${event.venueName}, Kota Baru, Karawang.`;
+const TITLE = `${couple.groomName} & ${couple.brideName} — Wedding Invitation`;
+const DESC = `Undangan pernikahan / wedding invitation of ${couple.groomFullName} & ${couple.brideFullName}, ${event.weddingDayLabel} at ${event.venueName}, Kota Baru, Karawang.`;
 
 export const Route = createFileRoute("/$guest")({
   head: ({ params }) => {
