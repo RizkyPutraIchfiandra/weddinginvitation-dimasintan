@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep public invitation translations centralized in `src/lib/i18n.tsx`; this ensures the language switch updates every section consistently without changing stored RSVP values.

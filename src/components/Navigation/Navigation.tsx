@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { motion } from "motion/react";
 import { Home, Heart, BookOpen, CalendarDays, Images, Gift, MailCheck } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
@@ -6,7 +6,7 @@ import { useLanguage } from "@/lib/i18n";
 export function Navigation() {
   const [active, setActive] = useState("home");
   const { t } = useLanguage();
-  const items = [
+  const items = useMemo(() => [
     { id: "home", label: t.navigation.home, icon: Home },
     { id: "couple", label: t.navigation.couple, icon: Heart },
     { id: "story", label: t.navigation.story, icon: BookOpen },
@@ -14,7 +14,7 @@ export function Navigation() {
     { id: "gallery", label: t.navigation.gallery, icon: Images },
     { id: "gift", label: t.navigation.gift, icon: Gift },
     { id: "rsvp", label: t.navigation.rsvp, icon: MailCheck },
-  ];
+  ], [t.navigation]);
 
   useEffect(() => {
     const sections = items
