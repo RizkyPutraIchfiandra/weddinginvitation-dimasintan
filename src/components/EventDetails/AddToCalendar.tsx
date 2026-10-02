@@ -63,47 +63,25 @@ export function AddToCalendar() {
   const title = `${t.event.calendarTitle} ${weddingConfig.couple.groomName} & ${weddingConfig.couple.brideName}`;
   const location = `${t.event.venue}, ${t.event.address}`;
   const handleAdd = () => {
-    const { start, end } = buildTimes();
     const ua = navigator.userAgent || "";
     const isIOS =
       /iPad|iPhone|iPod/.test(ua) ||
       (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
-    const isAndroid = /Android/i.test(ua);
 
     if (isIOS) {
-      // iOS / Apple: buka langsung agar Safari memunculkan sheet "Tambah ke Kalender" bawaan Apple
+      // Di iPhone/iPad: data URI text/calendar langsung memicu modal "Tambah ke Kalender" bawaan iOS
       const ics = icsContent(
         title,
         t.event.calendarDescription,
         location,
         [t.event.alarmDay, t.event.alarmHours]
       );
-      const blob = new Blob([ics], { type: "text/calendar;charset=utf-8" });
-      const url = URL.createObjectURL(blob);
-      window.open(url, "_blank");
-      setTimeout(() => URL.revokeObjectURL(url), 60_000);
-    } else if (isAndroid) {
-      // Android (Samsung, Xiaomi, Oppo, Vivo, dll): langsung buka aplikasi kalender bawaan via Intent (tanpa download file)
-      const startMillis = start.getTime();
-      const endMillis = end.getTime();
-      const intentUrl = `intent:#Intent;action=android.intent.action.INSERT;type=vnd.android.cursor.dir/event;S.title=${encodeURIComponent(title)};l.beginTime=${startMillis};l.endTime=${endMillis};S.eventLocation=${encodeURIComponent(location)};S.description=${encodeURIComponent(t.event.calendarDescription)};end`;
-
-      try {
-        window.location.href = intentUrl;
-      } catch {
-        window.open(
-          googleCalendarUrl(title, t.event.calendarDescription, location),
-          "_blank",
-          "noopener,noreferrer"
-        );
-      }
+      window.location.href = "data:text/calendar;charset=utf-8," + encodeURIComponent(ics);
     } else {
-      // Desktop / Laptop: langsung buka Google Calendar di tab baru
-      window.open(
-        googleCalendarUrl(title, t.event.calendarDescription, location),
-        "_blank",
-        "noopener,noreferrer"
-      );
+      // Di Android (Samsung, Xiaomi, Oppo, Vivo) & Desktop/Laptop:
+      // Membuka Google Calendar langsung dengan data yang sudah terisi lengkap
+      const gcal = googleCalendarUrl(title, t.event.calendarDescription, location);
+      window.open(gcal, "_blank", "noopener,noreferrer");
     }
   };
 
