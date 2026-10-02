@@ -1,9 +1,9 @@
-import bridePhotoAsset from "@/assets/photos/Solo1.jpg.asset.json";
-import groomPhotoAsset from "@/assets/photos/Solo2.jpg.asset.json";
-import bareng1Asset from "@/assets/photos/Bareng1.jpg.asset.json";
-import bareng2Asset from "@/assets/photos/Bareng2.jpg.asset.json";
-import bareng3Asset from "@/assets/photos/Bareng3.jpg.asset.json";
-import bareng4Asset from "@/assets/photos/Bareng4.jpg.asset.json";
+import bridePhotoAsset from "@/assets/photos/Solo1.jpg";
+import groomPhotoAsset from "@/assets/photos/Solo2.jpg";
+import bareng1Asset from "@/assets/photos/Bareng1.jpg";
+import bareng2Asset from "@/assets/photos/Bareng2.jpg";
+import bareng3Asset from "@/assets/photos/Bareng3.jpg";
+import bareng4Asset from "@/assets/photos/Bareng4.jpg";
 import weddingSong from "@/assets/audio/sampai-jadi-debu-piano.mp3";
 
 const bridePhoto = bridePhotoAsset.url;
