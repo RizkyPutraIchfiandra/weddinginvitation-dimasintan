@@ -26,9 +26,9 @@ export function Gift() {
     <section id="gift" className="paper relative overflow-hidden px-6 py-24 sm:py-28">
       <SectionTitle eyebrow={t.gift.eyebrow} title={t.gift.title} subtitle={t.gift.note} />
 
-      <div className="mx-auto mt-14 grid max-w-xl gap-5">
+      <div className="mx-auto mt-14 grid max-w-md gap-5">
         {gift.banks.map((b, i) => (
-          <Reveal key={b.number} delay={i * 0.1} className="glass-card rounded-3xl px-7 py-8">
+          <Reveal key={b.number} delay={i * 0.1} className="glass-card rounded-3xl px-5 py-7">
             <div className="flex items-center gap-3">
               <span className="flex size-9 items-center justify-center rounded-full bg-beige/70 text-chocolate">
                 <GiftIcon className="size-4" aria-hidden="true" />
@@ -40,7 +40,7 @@ export function Gift() {
             <button
               type="button"
               onClick={() => copy(b.number)}
-              className="mt-6 inline-flex items-center gap-2 rounded-full border border-caramel/40 px-5 py-2.5 text-[0.65rem] tracking-[0.28em] text-chocolate uppercase transition-colors hover:bg-beige/60 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+              className="mt-5 inline-flex items-center gap-2 rounded-full border border-caramel/40 px-4 py-2 text-[0.65rem] tracking-[0.28em] text-chocolate uppercase transition-colors hover:bg-beige/60 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
             >
               {copied === b.number ? (
                 <Check className="size-3.5" aria-hidden="true" />
