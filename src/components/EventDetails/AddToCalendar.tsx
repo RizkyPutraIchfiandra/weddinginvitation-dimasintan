@@ -1,4 +1,5 @@
 import { CalendarPlus } from "lucide-react";
+import { toast } from "sonner";
 import { weddingConfig } from "@/data/weddingConfig";
 import { useLanguage } from "@/lib/i18n";
 
@@ -63,6 +64,9 @@ export function AddToCalendar() {
   const title = `${t.event.calendarTitle} ${weddingConfig.couple.groomName} & ${weddingConfig.couple.brideName}`;
   const location = `${t.event.venue}, ${t.event.address}`;
   const handleAdd = () => {
+    // Show informational toast right away so user knows what to expect
+    toast.info(t.event.calendarToast, { duration: 5000 });
+
     const ua = navigator.userAgent || "";
     const isIOS =
       /iPad|iPhone|iPod/.test(ua) ||
