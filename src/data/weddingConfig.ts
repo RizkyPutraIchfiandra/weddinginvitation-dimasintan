@@ -106,7 +106,7 @@ export const weddingConfig = {
   },
   gift: {
     note: "Doa restu Anda merupakan hadiah terindah bagi kami. Namun apabila ingin memberikan tanda kasih, kami menyediakan fitur Wedding Gift.",
-    banks: [{ bank: "Bank Mandiri", holder: "Dimas Ichfianto", number: "1330012957650" }] as BankAccount[],
+    banks: [{ bank: "Bank Mandiri", holder: "Dimas Ichfianto", number: "1330012957650" }, { bank: "BCA", holder: "Ai Intan Sunarsih", number: "3780564422" }] as BankAccount[],
     /* Replace with your QRIS image URL, or set to "" to hide */
     qris: "",
   },
