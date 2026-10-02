@@ -63,33 +63,48 @@ export function AddToCalendar() {
   const title = `${t.event.calendarTitle} ${weddingConfig.couple.groomName} & ${weddingConfig.couple.brideName}`;
   const location = `${t.event.venue}, ${t.event.address}`;
   const handleAdd = () => {
-    const ics = icsContent(
-      title,
-      t.event.calendarDescription,
-      location,
-      [t.event.alarmDay, t.event.alarmHours]
-    );
-    const blob = new Blob([ics], { type: "text/calendar;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-
-    const ua = navigator.userAgent;
-    const isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+    const { start, end } = buildTimes();
+    const ua = navigator.userAgent || "";
+    const isIOS =
+      /iPad|iPhone|iPod/.test(ua) ||
+      (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+    const isAndroid = /Android/i.test(ua);
 
     if (isIOS) {
-      // iPhone/iPad: buka langsung agar Safari menampilkan sheet "Tambah ke Kalender" bawaan Apple
+      // iOS / Apple: buka langsung agar Safari memunculkan sheet "Tambah ke Kalender" bawaan Apple
+      const ics = icsContent(
+        title,
+        t.event.calendarDescription,
+        location,
+        [t.event.alarmDay, t.event.alarmHours]
+      );
+      const blob = new Blob([ics], { type: "text/calendar;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
       window.open(url, "_blank");
-    } else {
-      // Samsung, Android lainnya, dan Desktop: download file .ics yang langsung membuka kalender bawaan HP (Samsung Calendar, Mi Calendar, Outlook, dll)
-      const fileName = `wedding-${weddingConfig.couple.groomName.toLowerCase()}-${weddingConfig.couple.brideName.toLowerCase()}.ics`;
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = fileName;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }
+      setTimeout(() => URL.revokeObjectURL(url), 60_000);
+    } else if (isAndroid) {
+      // Android (Samsung, Xiaomi, Oppo, Vivo, dll): langsung buka aplikasi kalender bawaan via Intent (tanpa download file)
+      const startMillis = start.getTime();
+      const endMillis = end.getTime();
+      const intentUrl = `intent:#Intent;action=android.intent.action.INSERT;type=vnd.android.cursor.dir/event;S.title=${encodeURIComponent(title)};l.beginTime=${startMillis};l.endTime=${endMillis};S.eventLocation=${encodeURIComponent(location)};S.description=${encodeURIComponent(t.event.calendarDescription)};end`;
 
-    setTimeout(() => URL.revokeObjectURL(url), 60_000);
+      try {
+        window.location.href = intentUrl;
+      } catch {
+        window.open(
+          googleCalendarUrl(title, t.event.calendarDescription, location),
+          "_blank",
+          "noopener,noreferrer"
+        );
+      }
+    } else {
+      // Desktop / Laptop: langsung buka Google Calendar di tab baru
+      window.open(
+        googleCalendarUrl(title, t.event.calendarDescription, location),
+        "_blank",
+        "noopener,noreferrer"
+      );
+    }
   };
 
   return (
