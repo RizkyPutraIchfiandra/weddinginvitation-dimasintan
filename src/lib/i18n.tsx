@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
+﻿import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 
 export type Language = "id" | "en";
 
@@ -63,7 +63,7 @@ const copy = {
       mapTitle: "Peta lokasi",
       directions: "Petunjuk Arah",
       addressButton: "Lihat Alamat",
-      calendarHelp: "Satu klik membuka kalender dengan acara yang sudah terisi. Pada iPhone/iPad muncul dialog ‘Tambah ke Kalender’; pada Android atau desktop file .ics akan diunduh dan otomatis terbuka di aplikasi kalender. Pengingat otomatis muncul sehari dan 2 jam sebelum acara.",
+      calendarHelp: "Satu klik akan mengunduh file .ics. Buka file tersebut lalu tambahkan ke kalender. Pengingat otomatis akan muncul sehari dan 2 jam sebelum acara.",
       calendarButton: "Simpan ke Kalender",
       calendarTitle: "Pernikahan",
       calendarDescription: "Akad Nikah 09.00 WIB · Resepsi 10.00–16.00 WIB. Kami menantikan kehadiran Anda.",
@@ -178,7 +178,7 @@ const copy = {
       mapTitle: "Location map",
       directions: "Directions",
       addressButton: "View Address",
-      calendarHelp: "One click opens your calendar with the event pre‑filled. On iPhone/iPad a ‘Add to Calendar’ dialog appears; on Android or desktop the .ics file is downloaded and automatically opened in the calendar app. Reminders are set for one day and two hours before the event.",
+      calendarHelp: "Tap the button to download a .ics calendar file. Open it on your device and tap Add to Calendar. Reminders will be set automatically for one day and two hours before the event.",
       calendarButton: "Add to Calendar",
       calendarTitle: "Wedding of",
       calendarDescription: "Wedding ceremony at 9:00 AM · Reception from 10:00 AM–4:00 PM (WIB). We look forward to celebrating with you.",
