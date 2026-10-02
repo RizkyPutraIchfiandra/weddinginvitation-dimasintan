@@ -78,29 +78,24 @@ export const weddingConfig = {
   },
   story: [
     {
-      year: "MEI 2026",
-      title: "Jarak yang Mempertemukan",
-      text: "Bermula dari perkenalan sederhana selepas hangatnya momen Idul Fitri. Meski terbentang oleh jarak, percakapan santai yang mengalir tanpa henti perlahan membuka jalan bagi dua hati yang sebelumnya tak saling mengenal.",
+      year: "JANUARI",
+      title: "Sapaan Pertama",
+      text: "Semuanya bermula dari sebuah pesan sederhana di bulan Januari, dan segelas es kopi yang manis sekaligus pahit. Awal yang sederhana, namun menjadi awal dari sesuatu yang indah.",
     },
     {
-      year: "JUNI 2026",
-      title: "Temu Pertama & Hati yang Cocok",
-      text: "Hari ketika jarak akhirnya runtuh dalam sebuah pertemuan. Dari obrolan pertama, senyum canggung, hingga tawa lepas, ada kenyamanan luar biasa yang membuat kami yakin bahwa kami ditakdirkan untuk sejalan.",
+      year: "FEBRUARI",
+      title: "Sebuah Janji",
+      text: "Di bulan Februari, sebuah pertemuan di bandara berubah menjadi janji untuk melangkah sedikit lebih dekat, bersama-sama.",
     },
     {
-      year: "AGUSTUS 2026",
-      title: "Saling Menjaga & Menguatkan",
-      text: "Di tengah padatnya hari dan lelahnya rutinitas pekerjaan, kami selalu memilih untuk saling hadir. Menjadi tempat pulang yang menenangkan, saling membantu, dan saling menguatkan dalam setiap langkah.",
+      year: "16 AGUSTUS",
+      title: "Jawaban \u201cIya\u201d",
+      text: "Pada 16 Agustus, kedua keluarga akhirnya dipertemukan, dan Dimas mengajukan pertanyaan paling manis kepada Intan. Jawabannya: \u201cIya.\u201d",
     },
     {
-      year: "OKTOBER 2026",
-      title: "Sebuah Janji & Kepastian",
-      text: "Setelah melewati banyak cerita dan doa yang dipanjatkan, niat tulus pun diikrarkan. Mengubah rasa nyaman dan cinta yang tumbuh menjadi sebuah komitmen kuat untuk melangkah bersama selamanya.",
-    },
-    {
-      year: "DESEMBER 2026",
-      title: "Menuju Lembaran Abadi",
-      text: "Dua insan yang bermula dari jarak, kini dipersatukan dalam ikatan suci pernikahan. Hari yang kami syukuri, dan kami sangat berbahagia menyambut momen sakral ini bersama Anda.",
+      year: "6 DESEMBER 2026",
+      title: "Selamanya Dimulai",
+      text: "Dua hati, satu janji, satu perjalanan yang indah — dan seumur hidup untuk dijalani bersama.",
     },
   ] as StoryChapter[],
   quote: {
