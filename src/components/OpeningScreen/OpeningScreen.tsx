@@ -2,10 +2,10 @@ import { useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import wayangFemaleAsset from "@/assets/wayang/wayang-female.png.asset.json";
-const wayangFemale = wayangFemaleAsset.url;
-import wayangMaleAsset from "@/assets/wayang/wayang-male.png.asset.json";
-const wayangMale = wayangMaleAsset.url;
+import wayangFemaleAsset from "@/assets/wayang/wayang-female.png";
+const wayangFemale = wayangFemaleAsset;
+import wayangMaleAsset from "@/assets/wayang/wayang-male.png";
+const wayangMale = wayangMaleAsset;
 import { weddingConfig } from "@/data/weddingConfig";
 import { useLanguage } from "@/lib/i18n";
 

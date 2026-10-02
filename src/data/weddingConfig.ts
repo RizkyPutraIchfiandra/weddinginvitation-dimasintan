@@ -1,17 +1,17 @@
-import bridePhotoAsset from "@/assets/photos/Solo1.jpg.asset.json";
-import groomPhotoAsset from "@/assets/photos/Solo2.jpg.asset.json";
-import bareng1Asset from "@/assets/photos/Bareng1.jpg.asset.json";
-import bareng2Asset from "@/assets/photos/Bareng2.jpg.asset.json";
-import bareng3Asset from "@/assets/photos/Bareng3.jpg.asset.json";
-import bareng4Asset from "@/assets/photos/Bareng4.jpg.asset.json";
-import weddingSong from "@/assets/audio/sampai-jadi-debu-piano.mp3.asset.json";
+import bridePhotoAsset from "@/assets/photos/Solo1.jpg";
+import groomPhotoAsset from "@/assets/photos/Solo2.jpg";
+import bareng1Asset from "@/assets/photos/Bareng1.jpg";
+import bareng2Asset from "@/assets/photos/Bareng2.jpg";
+import bareng3Asset from "@/assets/photos/Bareng3.jpg";
+import bareng4Asset from "@/assets/photos/Bareng4.jpg";
+import weddingSong from "@/assets/audio/sampai-jadi-debu-piano.mp3";
 
-const bridePhoto = bridePhotoAsset.url;
-const groomPhoto = groomPhotoAsset.url;
-const bareng1 = bareng1Asset.url;
-const bareng2 = bareng2Asset.url;
-const bareng3 = bareng3Asset.url;
-const bareng4 = bareng4Asset.url;
+const bridePhoto = bridePhotoAsset;
+const groomPhoto = groomPhotoAsset;
+const bareng1 = bareng1Asset;
+const bareng2 = bareng2Asset;
+const bareng3 = bareng3Asset;
+const bareng4 = bareng4Asset;
 
 export type GalleryImage = {
   src: string;
@@ -58,7 +58,7 @@ export const weddingConfig = {
       { src: bareng4, alt: "Momen Dimas & Intan 4", orientation: "portrait" },
     ] as GalleryImage[],
     /* Lagu pernikahan (MP3). Dipakai jika spotifyUrl kosong. */
-    musicUrl: weddingSong.url,
+    musicUrl: weddingSong,
     /**
      * Link Spotify (track/playlist/album). Contoh:
      * "https://open.spotify.com/track/xxxxxxxxxxxxxxxxxxxxxx"
