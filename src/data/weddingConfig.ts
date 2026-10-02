@@ -4,7 +4,7 @@ import bareng1Asset from "@/assets/photos/Bareng1.jpg.asset.json";
 import bareng2Asset from "@/assets/photos/Bareng2.jpg.asset.json";
 import bareng3Asset from "@/assets/photos/Bareng3.jpg.asset.json";
 import bareng4Asset from "@/assets/photos/Bareng4.jpg.asset.json";
-import weddingSong from "@/assets/audio/sampai-jadi-debu-piano.mp3.asset.json";
+import weddingSong from "@/assets/audio/sampai-jadi-debu-piano.mp3";
 
 const bridePhoto = bridePhotoAsset.url;
 const groomPhoto = groomPhotoAsset.url;
