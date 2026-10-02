@@ -63,21 +63,33 @@ export function AddToCalendar() {
   const title = `${t.event.calendarTitle} ${weddingConfig.couple.groomName} & ${weddingConfig.couple.brideName}`;
   const location = `${t.event.venue}, ${t.event.address}`;
   const handleAdd = () => {
+    const ics = icsContent(
+      title,
+      t.event.calendarDescription,
+      location,
+      [t.event.alarmDay, t.event.alarmHours]
+    );
+    const blob = new Blob([ics], { type: "text/calendar;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+
     const ua = navigator.userAgent;
     const isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
 
     if (isIOS) {
-      // iPhone/iPad: buka file acara langsung — Safari menampilkan layar
-      // "Tambah ke Kalender" bawaan tanpa perlu mengunduh manual.
-      const blob = new Blob([icsContent(title, t.event.calendarDescription, location, [t.event.alarmDay, t.event.alarmHours])], { type: "text/calendar;charset=utf-8" });
-      const url = URL.createObjectURL(blob);
+      // iPhone/iPad: buka langsung agar Safari menampilkan sheet "Tambah ke Kalender" bawaan Apple
       window.open(url, "_blank");
-      setTimeout(() => URL.revokeObjectURL(url), 60_000);
     } else {
-      // Android & desktop: buka langsung aplikasi/situs Google Calendar
-      // dengan acara yang sudah terisi — tinggal tekan "Simpan".
-      window.open(googleCalendarUrl(title, t.event.calendarDescription, location), "_blank", "noopener,noreferrer");
+      // Samsung, Android lainnya, dan Desktop: download file .ics yang langsung membuka kalender bawaan HP (Samsung Calendar, Mi Calendar, Outlook, dll)
+      const fileName = `wedding-${weddingConfig.couple.groomName.toLowerCase()}-${weddingConfig.couple.brideName.toLowerCase()}.ics`;
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = fileName;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     }
+
+    setTimeout(() => URL.revokeObjectURL(url), 60_000);
   };
 
   return (
