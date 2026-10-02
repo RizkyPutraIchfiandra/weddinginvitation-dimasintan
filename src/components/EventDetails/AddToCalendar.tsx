@@ -76,8 +76,17 @@ export function AddToCalendar() {
       [t.event.alarmDay, t.event.alarmHours]
     );
     if (isIOS) {
-      // iOS: use data URI to open native add‑to‑calendar dialog
-      window.location.href = "data:text/calendar;charset=utf-8," + encodeURIComponent(ics);
+      // iOS Safari blocks data: URIs via window.location.href
+      // Use a hidden <a> with download attribute instead
+      const blob = new Blob([ics], { type: "text/calendar;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `${title}.ics`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(() => URL.revokeObjectURL(url), 60000);
       return;
     }
     // Android & desktop: try intent scheme first, fallback to .ics download
