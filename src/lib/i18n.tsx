@@ -178,7 +178,7 @@ const copy = {
       mapTitle: "Location map",
       directions: "Directions",
       addressButton: "View Address",
-      calendarHelp: "Open your calendar with the event prefilled. Reminders are set for one day and two hours before the event.",
+      calendarHelp: "One click opens your calendar with the event pre‑filled. On iPhone/iPad a ‘Add to Calendar’ dialog appears; on Android or desktop the .ics file is downloaded and automatically opened in the calendar app. Reminders are set for one day and two hours before the event.",
       calendarButton: "Add to Calendar",
       calendarTitle: "Wedding of",
       calendarDescription: "Wedding ceremony at 9:00 AM · Reception from 10:00 AM–4:00 PM (WIB). We look forward to celebrating with you.",
