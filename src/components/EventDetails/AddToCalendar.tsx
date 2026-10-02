@@ -68,20 +68,48 @@ export function AddToCalendar() {
       /iPad|iPhone|iPod/.test(ua) ||
       (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
 
+    // Prepare .ics content for fallback
+    const ics = icsContent(
+      title,
+      t.event.calendarDescription,
+      location,
+      [t.event.alarmDay, t.event.alarmHours]
+    );
     if (isIOS) {
-      // Di iPhone/iPad: data URI text/calendar langsung memicu modal "Tambah ke Kalender" bawaan iOS
-      const ics = icsContent(
-        title,
-        t.event.calendarDescription,
-        location,
-        [t.event.alarmDay, t.event.alarmHours]
-      );
+      // iOS: use data URI to open native add‑to‑calendar dialog
       window.location.href = "data:text/calendar;charset=utf-8," + encodeURIComponent(ics);
-    } else {
-      // Di Android (Samsung, Xiaomi, Oppo, Vivo) & Desktop/Laptop:
-      // Membuka Google Calendar langsung dengan data yang sudah terisi lengkap
-      const gcal = googleCalendarUrl(title, t.event.calendarDescription, location);
-      window.open(gcal, "_blank", "noopener,noreferrer");
+      return;
+    }
+    // Android & desktop: try intent scheme first, fallback to .ics download
+    const intentUrl = `intent:#Intent;action=android.intent.action.INSERT;type=vnd.android.cursor.item/event;S.title=${encodeURIComponent(
+      title
+    )};S.eventLocation=${encodeURIComponent(
+      location
+    )};S.description=${encodeURIComponent(
+      t.event.calendarDescription
+    )};S.beginTime=${new Date(weddingConfig.event.weddingDate).getTime()};S.endTime=${new Date(weddingConfig.event.weddingDate).getTime() + 7 * 60 * 60 * 1000};end`;
+    try {
+      // Attempt to navigate via intent
+      window.location.href = intentUrl;
+      // If blocked, fallback after short delay
+      setTimeout(() => {
+        const blob = new Blob([ics], { type: "text/calendar;charset=utf-8" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `${title}.ics`;
+        a.click();
+        setTimeout(() => URL.revokeObjectURL(url), 60000);
+      }, 500);
+    } catch (e) {
+      // Fallback download
+      const blob = new Blob([ics], { type: "text/calendar;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `${title}.ics`;
+      a.click();
+      setTimeout(() => URL.revokeObjectURL(url), 60000);
     }
   };
 
