@@ -63,7 +63,7 @@ const copy = {
       mapTitle: "Peta lokasi",
       directions: "Petunjuk Arah",
       addressButton: "Lihat Alamat",
-      calendarHelp: "Satu klik membuka kalender dengan acara yang sudah terisi. Pengingat otomatis muncul sehari dan 2 jam sebelum acara.",
+      calendarHelp: "Satu klik membuka kalender dengan acara yang sudah terisi. Pada iPhone/iPad muncul dialog ‘Tambah ke Kalender’; pada Android atau desktop file .ics akan diunduh dan otomatis terbuka di aplikasi kalender. Pengingat otomatis muncul sehari dan 2 jam sebelum acara.",
       calendarButton: "Simpan ke Kalender",
       calendarTitle: "Pernikahan",
       calendarDescription: "Akad Nikah 09.00 WIB · Resepsi 10.00–16.00 WIB. Kami menantikan kehadiran Anda.",
